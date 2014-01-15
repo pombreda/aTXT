@@ -9,6 +9,7 @@ import os
 import re
 import errno
 import shutil
+from cli_tools import *
 
 # conversion desde docx
 from docx import opendocx, getdocumenttext
@@ -117,7 +118,8 @@ def pdf2TXT(path, nombre_archivo):
 	outfp.close()
 	return [True, nuevo_nombre]
 
-def main(argv):
+@console
+def main():
 	import getopt
 	def usage():
 		print (

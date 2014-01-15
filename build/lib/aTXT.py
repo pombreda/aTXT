@@ -121,7 +121,7 @@ def main(argv):
 	import getopt
 	def usage():
 		print (
-		'********\naTXT v.01\n'
+		'********\naTXT\n'
 		'Extractor de texto\n' 
 		'Generacion de archivos de texto \".txt\" de archivos \".docx\" o \".pdf\"\n'
 		'en lo profundo de un directorio, sobre subdirectorios.\n'

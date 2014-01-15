@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # d555
 # Jonathan Prieto
-# http://www.github.com/d555/aTXT
-
 
 import sys
 import os
@@ -28,7 +26,6 @@ patronDocx = re.compile(".*\.docx$")
 patronPDF = re.compile(".*\.pdf$")
 patronDir = re.compile(".*/TXT")
 patronDoc = re.compile("[^~].*\.doc$")
-
 
 def doc2TXT(path, nombre_archivo):
 	'''

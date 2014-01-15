@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/opt/python/bin/python2.7
 # d555
 # Jonathan Prieto
 # http://www.github.com/d555/aTXT
@@ -121,7 +121,7 @@ def main(argv):
 	import getopt
 	def usage():
 		print (
-		'********\naTXT\n'
+		'********\naTXT v.01\n'
 		'Extractor de texto\n' 
 		'Generacion de archivos de texto \".txt\" de archivos \".docx\" o \".pdf\"\n'
 		'en lo profundo de un directorio, sobre subdirectorios.\n'

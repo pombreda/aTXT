@@ -34,6 +34,8 @@ or, manually, by calling setup.py:
 - `docx` 
 - `pdfminer`
 
+If you run on **Windows** and you want to convert `.doc` files. You need to install: `win32com`. You can get it `http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/`.
+
 Usage
 -----
 
@@ -41,7 +43,7 @@ This tool can be used in two ways:
 1. Copy `aTXT.py` or execute `aTXT` in your target folder where you have the documents that you need to convert.
 2. Just use the console. 
 ```
-$ aTxt.py --pdf --docx -l
+$ aTXT.py --pdf --docx -l
 ```
 3. Use inside python script with `import aTXT` and the three methods described above.
 

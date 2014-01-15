@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 from glob import glob
@@ -15,9 +15,11 @@ for scheme in INSTALL_SCHEMES.values():
 
 setup(
         name = 'aTXT',
-        packages = ['aTXT'], # this must be the same as the name above
+        packages = find_packages(),
         py_modules=['aTXT'],
-        version = '0.1',
+        version = '0.1.1',
+        license= 'MIT',
+        platform ='*nix, windows with office/win32comlib',
         description = 'An easy conversion of docx, pdf, doc(windows) to txt format file. Extraction`s tool.',
         author = 'Jonathan Prieto',
         author_email = 'prieto.jona@gmail.com',
@@ -30,4 +32,11 @@ setup(
             "docx>=0.2.0",
             "pdfminer"
         ],
+        zip_safe=True,
+        scripts=['aTXT.py'],
+        entry_points = {
+        'console_scripts': [
+            'aTXT = aTXT:main'
+        ]
+        },
     )

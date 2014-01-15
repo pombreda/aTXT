@@ -35,7 +35,7 @@ setup(
         zip_safe=True,
         scripts=['aTXT.py'],
         entry_points = {
-        'console_scripts': [
+         'console_scripts': [
             'aTXT = aTXT:main'
         ]
         },

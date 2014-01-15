@@ -53,7 +53,7 @@ In the inside of `aTXT.py` already has three main methods:
 - `aTXT.pdf2TXT(path_file, name_file):` for the conversion of `.pdf` to `.txt`
 - `aTXT.doc2TXT(path_file, name_file):` for the conversion of `.doc` to `.txt`
 
-All methods above return `[ bool:Status, new_name_file]`. The `Status` is `False` if problem appear else `True`, method finished successful.
+All methods above return `[ bool:Status, new_name_file]`. The `Status` is `False` if problem appears else `True`, method finished successful.
 
 
 *So any idea to improve this?*  

@@ -1,5 +1,5 @@
 from distutils.core import setup
-    setup(
+setup(
         name = 'aTXT',
         packages = ['aTXT'], # this must be the same as the name above
         version = '0.1',

@@ -1,0 +1,13 @@
+# Python bytecode
+*.py[co]
+
+# Packaging files
+*.egg*
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# Editor temp files
+*.swp
+*~

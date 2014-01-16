@@ -1,5 +1,5 @@
 # aTXT.py 
-A extraction tool (`v0.1`) on a directory. By default traversing all inner files and folders searching files with the extension `.docx`,`.pdf`m`.doc` to convert a plain text, extension `.txt`. You can specify your requirements with `aTXT.py -help` or view below usage. 
+An extraction tool (`v0.1`) on a directory. By default traversing all inner files and folders searching files with the extension `.docx`,`.pdf`,`.doc` (only *windows*) to convert a plain text, extension `.txt`. You can specify your requirements with `aTXT.py -help` or view below usage. 
 
 Meta
 ------
@@ -12,9 +12,9 @@ Meta
 Purpose
 ------
 
-Are you needing some easy extraction tool to make your data mining analysis or whatever?. Everybody knows to handle `.txt` is so easy to read and usefull to processing.
+Do you want a easy extraction tool to make your data mining analysis or whatever?. Everybody knows to handle `.txt` is so easy to read and usefull to processing.
 
-I use this script to convert common files documents to plain text with just *doble-click*. The outcome it's just a `.txt` file for each document in the search.
+I use this script to convert common files documents to plain text with just *doble-click*, as one way to use it, but you could use it in a shell. The outcome by the way it's just a `.txt` file for each document in the search.
 
 Installation
 -------
@@ -41,9 +41,9 @@ Usage
 
 This tool can be used in two ways:
 1. Copy `aTXT.py` or execute `aTXT` in your target folder where you have the documents that you need to convert.
-2. Just use the console. 
+2. Just use the console. For example, 
 ```
-$ aTXT.py --pdf --docx -l
+$ aTXT --pdf --docx -l
 ```
 3. Use inside python script with `import aTXT` and the three methods described above.
 

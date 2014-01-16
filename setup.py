@@ -93,7 +93,7 @@ for scheme in INSTALL_SCHEMES.values():
     scheme['data'] = scheme['purelib']
 
 def find_version():
-    return "0.1.2"
+    return "0.1.3"
 
 setup(
         name = 'aTXT',

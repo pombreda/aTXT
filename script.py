@@ -7,10 +7,7 @@ import shutil as sh
 import tempfile as tmp
 import sys
 
-import locale
-import unicodedata
-from kitchen.text.converters import getwriter, to_bytes, to_unicode
-from kitchen.i18n import get_translation_object
+from kitchen.text.converters import to_unicode,getwriter
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
@@ -21,12 +18,8 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 def main():
 
-    translations = get_translation_object("ejemplo")
-    _ = translations.ugettext
-    b_ = translations.lgettext
 
     dir = to_unicode("D:\\textos bogotá", 'utf-8')
-    dire = "D:\\textos bogotá"
     casos_dir = os.path.join(dir, "raros")
     txt_dirs = os.path.join(dir, "txt_dirs")
     all_dirs = os.path.join(dir, "all_dirs")

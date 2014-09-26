@@ -49,7 +49,8 @@ class aTXT(object):
                  lang='spa',
                  overwrite=True,
                  uppercase=False,
-                 savein='TXT'):
+                 savein='TXT',
+                 msword=None):
 
         self.debug = debug
         self.log_path = log_filename
@@ -183,7 +184,7 @@ class aTXT(object):
             os.rename(os.path.join(self.tempdir, self.fbasename), self.temp_path)
         except Exception, e:
             self._debug("fail to change name to 1.pdf", e)
-
+        self.msword = msword
 
 
     def _debug(self, msg, *args):
@@ -288,11 +289,37 @@ class aTXT(object):
             self._debug("from_doc", "dispatching word")
             # w = win32com.client.Dispatch("Word.Application")
             # w.visible = 0
-            msword = client.DispatchEx("Word.Application") # Using DispatchEx for an entirely new Word instance
-            msword.Visible = False
+            cerrar = False
+            if not self.msword:
+                self.msword = client.DispatchEx("Word.Application") # Using DispatchEx for an entirely new Word instance
+                self.msword.Visible = True
+                cerrar = True
+
             try:
                 self._debug("from_doc", "opening file", self.temp_path)
-                wb = msword.Documents.Open(self.temp_path)
+                # wb = self.msword.Documents.Open(self.temp_path)
+
+                # http://msdn.microsoft.com/en-us/library/bb216319%28office.12%29.aspx
+                # wb = self.msword.Documents.OpenNoRepairDialog(
+                wb = self.msword.Documents.Open(
+                    FileName = self.temp_path, 
+                    ConfirmConversions = False, 
+                    ReadOnly = True, 
+                    AddToRecentFiles = False, 
+                    # PasswordDocument, 
+                    # PasswordTemplate, 
+                    Revert = True, 
+                    # WritePasswordDocument, 
+                    # WritePasswordTemplate, 
+                    # Format, 
+                    # Encoding, 
+                    Visible = True, 
+                    # OpenConflictDocument, 
+                    OpenAndRepair = True, 
+                    # DocumentDirection, 
+                    NoEncodingDialog = True
+                    )
+
             except Exception, e:
                 self._debug("from_doc", "fail open file with Word", e)
             try:
@@ -304,7 +331,8 @@ class aTXT(object):
             self._debug("from_doc", "closing file")
             wb.Close()
             self._debug("from_doc", "closing word office")
-            msword.Quit()
+            if cerrar:
+                self.msword.Quit()
             return self.txt_path
         except Exception, e:
             self._debug("*", "from_doc", "fail Dispatch word", e)

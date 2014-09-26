@@ -68,20 +68,21 @@ class ProcessLib(QtCore.QThread):
         self.window.buttonStart.setEnabled(False)
         self.window.buttonStop.setEnabled(True)
 
-        if self.window.debug:
-            cuarentena = os.path.join(self.window.directory, "Files-1KB")
-            files_1kb = 0
-            try:
-                debug("creating folder to files with < 1KB")
-                os.makedirs(cuarentena)
-                debug("folder created")
-            except:
-                debug("fail to create", cuarentena)
 
         msg = 'calling wk.walk to trasverse directories'
         debug(msg)
         self.message.emit(msg)
         self.partDone.emit(0)
+
+        msword = None
+
+        try:
+            from win32com import client
+            msword = client.DispatchEx("Word.Application")
+            msword.Visible = True
+        except:
+            debug("It's not available win32com")
+            pass
 
         conta = 0
         for root, dirs, files in wk.walk(
@@ -146,7 +147,8 @@ class ProcessLib(QtCore.QThread):
                     debug=DEBUG,
                     uppercase=self.window.uppercase,
                     overwrite=self.window.overwrite,
-                    savein=self.window.savein
+                    savein=self.window.savein,
+                    msword = msword
                 )
 
                 try:
@@ -163,20 +165,6 @@ class ProcessLib(QtCore.QThread):
                     debug('fail conversion')
                     debug("error:", e)
 
-                # if self.window.debug:
-                #     if os.path.getsize(txt.txt_path) < (1 << 10L):
-                #         msg = "file with less of 1KB, " + \
-                #             wk.size_str(txt.txt_size())
-                #         debug(msg)
-                #         self.message.emit(msg)
-
-                #         try:
-                #             sh.copy2(txt.txt_path, cuarentena)
-                #             sh.copy2(txt.fpath, cuarentena)
-                #             files_1kb += 1
-                #         except Exception, e:
-                #             debug(e)
-
                 self.partDone.emit(conta)
                 conta += 1
 
@@ -189,11 +177,14 @@ class ProcessLib(QtCore.QThread):
         debug(msg)
         self.message.emit(msg)
 
-        if files_1kb > 0:
+        if msword:
             try:
-                os.rmtree(cuarentena)
-            except:
-                pass
+                debug("closing word application")
+                msword.Quit()
+                del msword
+            except Exception, e:
+                debug("fail to quit from word application")
+                debug(e)
 
         self.procDone.emit(True)
         self.exit()

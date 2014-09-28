@@ -72,11 +72,6 @@ class aTXT(object):
         self.lang = lang
         self._debug('File info:')
         self.fpath = filepath
-        # try:
-        #     self._debug('trying to encode utf-8 filepath')
-        #     self.fpath = self.fpath.encode('utf-8')
-        # except:
-        #     self._debug('fail to encode')
 
         self._debug('\tpath:', self.fpath)
         if not os.path.exists(self.fpath):
@@ -108,14 +103,6 @@ class aTXT(object):
            not os.path.isdir(savein) or \
            not os.path.exists(savein):
             self.savein = os.path.join(self.fdir, "TXT")
-
-        # try:
-        #     self._debug('trying to encode utf-8 savein')
-        #     self.savein = to_unicode(self.savein.encode,'utf-8')
-        #     self._debug('savein', self.savein)
-
-        # except:
-        #     self._debug('fail to encode utf-8')
 
         self.txt_path = os.path.join(self.savein, self.txt_basename)
         self._debug('\tpath:', self.txt_path)
@@ -292,7 +279,7 @@ class aTXT(object):
             cerrar = False
             if not self.msword:
                 self.msword = client.DispatchEx("Word.Application") # Using DispatchEx for an entirely new Word instance
-                self.msword.Visible = True
+                self.msword.Visible = False
                 cerrar = True
 
             try:
@@ -313,7 +300,7 @@ class aTXT(object):
                     # WritePasswordTemplate, 
                     # Format, 
                     # Encoding, 
-                    Visible = True, 
+                    Visible = False, 
                     # OpenConflictDocument, 
                     OpenAndRepair = True, 
                     # DocumentDirection, 

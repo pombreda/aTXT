@@ -79,7 +79,7 @@ class ProcessLib(QtCore.QThread):
         try:
             from win32com import client
             msword = client.DispatchEx("Word.Application")
-            msword.Visible = True
+            msword.Visible = False
         except:
             debug("It's not available win32com")
             pass

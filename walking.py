@@ -2,19 +2,15 @@
 # -*- coding: utf-8 -*-
 # @Author: usuario
 # @Date:   2014-09-05 07:45:22
-# @Last Modified by:   usuario
-# @Last Modified time: 2014-09-19 07:29:15
+# @Last Modified by:   Jonathan Prieto 
+# @Last Modified time: 2014-09-29 23:04:19
 
 __author__ = 'Jonathan Prieto'
 import os
 import sys
 import scandir
 
-
-import locale
-import unicodedata
-from kitchen.text.converters import getwriter, to_bytes, to_unicode
-from kitchen.i18n import get_translation_object
+from kitchen.text.converters import getwriter, to_unicode
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
@@ -38,6 +34,12 @@ def walk(top, topdown=True, onerror=None, flinks=False, tfiles=['*'], sdirs=[],
     :return: a generator with values, top, root-path and dirs, nondirs
                     ( class from scandir library )
     """
+    top = to_unicode(top, 'utf-8')
+    try:
+        top = top.encode('utf-8')
+    except:
+        pass
+        
     try:
         level = int(level)
     except ValueError:
@@ -122,9 +124,6 @@ def walk_size(dir='', sdirs=[], level=0, tfiles=['*']):
                 filepath = os.path.join(root, f.name)
                 total_size += os.path.getsize(filepath)
                 count_files += 1
-    except:
-        try:
-            pass
-        except:
-            pass
+    except :
+       pass
     return [count_files, total_size]

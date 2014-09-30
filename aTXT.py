@@ -11,133 +11,202 @@ import walking as wk
 
 import docx.docx as docx
 from pdfminer import layout, pdfinterp, converter, pdfpage
-
+from latin2ascii import *
 import sys
 import subprocess as sub
 import shutil as sh
 import logging as log
 import zipfile as zp
 import datetime
-try:
-    from win32com import client
-    
-except:
-    pass
 
-import locale
-import unicodedata
-from kitchen.text.converters import getwriter, to_bytes, to_unicode
-from kitchen.i18n import get_translation_object
+from kitchen.text.converters import getwriter, to_unicode
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
+# log_filename = "aTXT" + \
+#     datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log"
+log_filename = "LOG.txt"
 
 
-from latin2ascii import latin2ascii, remove_accents
+class Debug(object):
 
-log_filename = "aTXT" + \
-    datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log"
+    def __init__(self, log_path=log_filename, debug=True):
+        self.debug = debug
+        log.basicConfig(filename=log_path,
+                        filemode='w',
+                        level=log.DEBUG,
+                        format='%(asctime)s %(message)s',
+                        datefmt='%m/%d/%y %I:%M:%S %p | '
+                        )
+
+    def write(self, msg, *args):
+        if not self.debug:
+            pass
+        try:
+            if type(msg) is type(lambda x: x):
+                log.debug(msg.func_name)
+                for arg in args:
+                    log.debug("\t{0}".format(args))
+            else:
+                log.debug(msg + ' ' + ' '.join(args))
+        except:
+            log.debug(msg)
+            for arg in args:
+                log.debug(arg)
+
+
+class File(object):
+    _debug = Debug()
+
+    def __init__(self, path, debug=None):
+        self.debug('FileClass')
+        if not debug:
+            self._debug = debug
+        try:
+            self.path = to_unicode(path)
+        except Exception, e:
+            self.path = path
+            self.debug(e)
+
+        try:
+            self.basename = os.path.basename(self.path)
+            self.name, self.extension = os.path.splitext(self.basename)
+            self.extension = self.extension.lower()
+            self.dirname = os.path.dirname(self.path)
+        except Exception, e:
+            self.debug(e)
+        self.to_str()
+
+    def debug(self, *args):
+        self._debug.write(*args)
+
+    def remove(self):
+        if os.path.isfile(self.path):
+            try:
+                sh.remove(self.path)
+                self.debug("File deleted", self.path)
+                return 1
+            except:
+                self.debug("*", "Failed remove file", self.path)
+        return 0
+
+    def size(self):
+        if not os.path.isfile(self.path):
+            self.debug("is not a file", self.path)
+            return 0
+        size = os.path.getsize(self.path)
+        self.debug("Size:", wk.size_str(size))
+        return size
+
+    def move(self, topath=None):
+        if not topath:
+            return False
+        try:
+            self.debug("moving from", self.path, "to", topath)
+            sh.copy2(self.path, topath)
+            self.debug("file moved")
+        except Exception, e:
+            self.debug("*", "fail moving file", e)
+        return topath
+
+    def to_str(self):
+        self.debug("\t", self.basename)
+        print self.basename
+
+        self.debug("\t", self.path)
+        print self.path
+
+        print self.size()
+
+        test = os.path.isdir(self.dirname), os.path.isfile(self.path)
+        self.debug("\t", "test: (exist dirname, exist filepath)", test)
+        print "\t", "test:", test
+
+        print "==============="
+
+    def create_temp(self, tempdir=None):
+        if not tempdir or not os.path.exists(tempdir):
+            try:
+                self.debug("creating a temporary directory")
+                self._tempdir = tmp.mkdtemp()
+                self.debug(self._tempdir)
+            except Exception, e:
+                self.debug("* fail to create directory", e)
+        else:
+            self._tempdir = tempdir
+        try:
+            self.debug(
+                "from temp()", "copy ", self.basename, "to ", self._tempdir)
+            sh.copy2(self.path, self._tempdir)
+        except:
+            self.debug("* fail to copy of", self.basename, "to", self._tempdir)
+
+        self._name = "temp"
+        self._basename = self._name + self.extension
+        self._path = os.path.join(self._tempdir, self._basename)
+        try:
+            self.debug("change name for security: " + self._basename)
+            os.rename(os.path.join(self._tempdir, self.basename), self._path)
+        except Exception, e:
+            self.debug("fail to change name to 1.pdf", e)
 
 
 class aTXT(object):
+    overwrite = True
+    uppercase = False
+    savein = 'TXT'
+    hero_docx = 'python-docx'
+    hero_pdf = 'xpdf'
 
-    def __init__(self,
-                 filepath='',
-                 debug=False,
-                 verbose=False,
-                 lang='spa',
-                 overwrite=True,
-                 uppercase=False,
-                 savein='TXT',
-                 msword=None):
+    def __init__(self, debug=False, lang='spa', msword=None, use_temp=False):
+        self._debug = debug
+        if not debug:
+            self._debug = Debug()
 
-        self.debug = debug
-        self.log_path = log_filename
+        self.debug("aTXT Version: " + __version__ + ":" * 50)
 
-        if self.debug:
-            log.basicConfig(filename=self.log_path, filemode='w',
-                            level=log.DEBUG,
-                            format='%(asctime)s %(message)s',
-                            datefmt='%m/%d/%Y %I:%M:%S %p'
-                            )
-
-        self.verbose = verbose
-        if self.verbose:
-            log.basicConfig(level=log.DEBUG,
-                            format='%(asctime)s %(message)s',
-                            datefmt='%m/%d/%Y %I:%M:%S %p')
-
-        self._debug("aTXT v" + __version__ + "=" * 30)
+        # basic setting
         self.lang = lang
-        self._debug('File info:')
-        self.fpath = filepath
+        self.use_temp = use_temp
+        if not msword:
+            try:
+                from win32com import client
+                self.msword = client.DispatchEx("Word.Application")
+                self.msword.Visible = False
+            except:
+                self.debug("It's not available win32com")
 
-        self._debug('\tpath:', self.fpath)
-        if not os.path.exists(self.fpath):
-            self._debug("In", self.fpath, "file not found")
-
-        self.fbasename = os.path.basename(filepath)
-        self._debug('\tbasename:', self.fbasename)
-
-        self.fname, self.fext = os.path.splitext(self.fbasename)
-        self.foverwrite = overwrite
-        self._debug('\toverwrite:', self.foverwrite)
-
-        self.fuppercase = uppercase
-        self._debug('\tuppercase:', self.fuppercase)
-
-        self.fdir = os.path.dirname(filepath)
-        self._debug("\tsize:", wk.size_str(self.fsize()))
-
-        self._debug('txt file:')
-        self.txt_name = self.fname
-        if self.fuppercase:
-            self.txt_name = self.txt_name.upper()
-
-        self.txt_basename = self.txt_name + ".txt"
-        self._debug('\tbasename:', self.txt_basename)
-
-        self.savein = savein
-        if savein == "TXT" or not savein or \
-           not os.path.isdir(savein) or \
-           not os.path.exists(savein):
-            self.savein = os.path.join(self.fdir, "TXT")
-
-        self.txt_path = os.path.join(self.savein, self.txt_basename)
-        self._debug('\tpath:', self.txt_path)
-        self._debug('Ready to start conversion!')
-        self._debug('')
-
+        # TESSERACT AND OTHERS BINARIES
         self.tesseract_required = "3.02.02"
         self.xpdf_required = "3.04"
 
         if sys.platform in ["win32"]:
-            self._debug('set thirdy paths for win32')
+            self.debug('set thirdy paths for win32')
             try:
                 self.xpdf_path = os.path.join(os.curdir, 'bin', 'win', 'bin64')
                 self.pdftotext = os.path.join(self.xpdf_path, 'pdftotext.exe')
                 self.pdftopng = os.path.join(self.xpdf_path, 'pdftopng.exe')
                 self.pdffonts = os.path.join(self.xpdf_path, 'pdffonts.exe')
             except:
-                self._debug('fail set thirdy paths for win32')
+                self.debug('fail set thirdy paths for win32')
 
         elif sys.platform in ["darwin"]:
-            self._debug('set thirdy paths for darwin mac')
+            self.debug('set thirdy paths for darwin mac')
             try:
                 self.xpdf_path = os.path.join(os.curdir, 'bin', 'mac', 'bin64')
                 self.pdftotext = os.path.join(self.xpdf_path, 'pdftotext')
                 self.pdftopng = os.path.join(self.xpdf_path, 'pdftopng')
                 self.pdffonts = os.path.join(self.xpdf_path, 'pdffonts')
             except:
-                self._debug('fail set thirdy paths for darwin mac')
+                self.debug('fail set thirdy paths for darwin mac')
 
         if not os.path.exists(self.pdftotext):
-            self._debug("not exists", self.pdftotext)
+            self.debug("not exists", self.pdftotext)
         if not os.path.exists(self.pdftopng):
-            self._debug("not exists", self.pdftopng)
+            self.debug("not exists", self.pdftopng)
 
-        self._debug('set path for tesseract OCR')
+        self.debug('set path for tesseract OCR')
 
         if str(os.name) == 'nt':
             self.tesseract_binary = '"c:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe"'
@@ -145,220 +214,112 @@ class aTXT(object):
             self.tesseract_binary = "/usr/local/bin/tesseract"
             if self.debug:
                 try:
-                    self._debug(
+                    self.debug(
                         "trying to find tesseract binary by which command")
                     self.tesseract_binary = sub.check_output(
                         ['which', 'tesseract']).rstrip()
                 except:
-                    self._debug("*", "fail with which commnand")
-                self._debug("set tesseract: ", self.tesseract_binary)
+                    self.debug("*", "fail with which commnand")
+                self.debug("set tesseract: ", self.tesseract_binary)
+        self.debug("Ready to start any conversion")
+        self.debug("")
 
-        self._debug("TEMP", "creating temp directory")
-        self.tempdir = tmp.mkdtemp()
-
-        self._debug("dir created", self.tempdir)
+    def close(self):
+        self.debug('Close aTXT '+':'*50)
         try:
-            self._debug("from_pdf_ocr", "copy ", self.fname, "to ", self.tempdir)
-            sh.copy2(self.fpath, self.tempdir)
+            self.msword.Quit()
         except:
-            self._debug("* fail to copy of", self.fbasename, "to", self.tempdir)
+            pass
+        self.debug('Finish work')
 
-        self.temp_name = "temp" 
-        self.temp_basename = self.temp_name + self.fext
-        self.temp_path = os.path.join(self.tempdir, self.temp_basename)
+    def debug(self, *args):
+        self._debug.write(*args)
+
+    def make_dir(self, path):
         try:
-            self._debug("change name for secure process to "+self.temp_basename)
-            os.rename(os.path.join(self.tempdir, self.fbasename), self.temp_path)
+            os.makedirs(path)
+            self.debug('\tDirectory created:', path)
         except Exception, e:
-            self._debug("fail to change name to 1.pdf", e)
-        self.msword = msword
+            self.debug("\t", e)
 
-
-    def _debug(self, msg, *args):
-        if self.debug:
-            try:
-                if type(msg) is type(lambda x: x):
-                    log.debug(msg.func_name)
-                    for arg in args:
-                        log.debug("\t{0}".format(args))
-                else:
-                    log.debug(msg + ' ' + ' '.join(args))
-            except:
-                log.debug(msg)
-                for arg in args:
-                    log.debug(arg)
-
-    def make_dir(self, dir):
-        try:
-            os.makedirs(dir)
-            self._debug('Directory created:', dir)
-        except:
-            self._debug("*", 'fail creating directory,maybe exists ', dir)
-        if not os.access(dir, os.W_OK):
-            self._debug('Directory without permissions: %s' % dir)
+        if not os.access(path, os.W_OK):
+            self.debug('\tDirectory without permissions: %s' % path)
             return 0
         return 1
 
-    def remove_dir(self, dir):
-        if os.path.isdir(dir):
+    def remove_dir(self, path):
+        if os.path.isdir(path):
             try:
-                sh.rmtree(dir)
-                self._debug("Directory removed", dir)
+                sh.rmtree(path)
+                self.debug("Directory removed", path)
                 return 1
             except:
-                self._debug("*", "Failed remove directory", dir)
+                self.debug("*", "Failed remove directory", path)
         return 0
 
-    def remove_file(self, filepath):
-        if os.path.isfile(filepath):
-            try:
-                sh.remove(filepath)
-                self._debug("File deleted", filepath)
-                return 1
-            except:
-                self._debug("*", "Failed remove file", filepath)
-        return 0
-
-    def txt_remove(self):
-        return self.remove_file(self.txt_path)
-
-    def fsize(self, path=''):
-        if not path:
-            path = self.fpath
-        if not os.path.exists(path):
-            self._debug("not exists file", path)
-            return 0
-        if not os.path.isfile(path):
-            self._debug("is not a file", path)
-            return 0
-        size = os.path.getsize(path)
-        self._debug("Size:", wk.size_str(size))
-        return size
-
-    def txt_size(self):
-        return self.fsize(path=self.txt_path)
-
-    def move(self, topath=''):
-        if not topath:
-            topath = self.txt_path
-        if not self.foverwrite and \
-                os.path.exists(os.path.join(topath, self.fbasename)):
-            return self.txt_path
+    def set(self, filepath, savein='TXT', overwrite='True', uppercase='False'):
+        self.debug("Set configuration for file:")
         try:
-            self._debug("moving from", self.fpath, "to", topath)
-            sh.copy2(self.fpath, topath)
-            self._debug("file moved")
+            self.file = File(filepath, debug=self._debug)
+            self.debug("\tsuccessful instance of file")
         except Exception, e:
-            self._debug("*", "fail moving file", e)
-        return topath
+            self.debug("\tfail creating File object")
+            self.debug(e)
 
-    def from_doc(self):
-        # TODO: assert fext is accurate
-        self._debug('starting doc to txt')
+        self.debug("\t", self.file.basename)
+
         try:
-            assert os.path.isfile(self.temp_path)
+            self.debug('\ttrying to encode utf-8 savein')
+            self.savein = to_unicode(self.savein, 'utf-8')
         except:
-            self._debug("*", "from_doc", self.temp_path, "is not a file")
+            self.debug('\tfail to encode utf-8')
+
+        if not os.path.isdir(savein):
+            self.savein = os.path.join(self.file.dirname, savein)
+            self.make_dir(self.savein)
+    
+        self.debug('\tfile will be save in', self.savein)
+
+        if type(overwrite) == type(True):
+            self.overwrite = overwrite
+
+        if type(uppercase) == type(True):
+            self.uppercase = uppercase
+
+        self.txt = None
+        try:
+            path=os.path.join(self.savein,  self.file.name + ".txt")
+            self.debug("\tsetting .txt file", path)
+            self.txt = File(path,self._debug)
+        except Exception, e:
+            self.debug("\tfail to create txt file", e)
+
+    def from_docx(self, hero='xml', filepath='', savein='', overwrite='', uppercase=''):
+        try:
+            self.set(filepath, savein, overwrite, uppercase)
+        except Exception, e:
+            self.debug(e)
+
+        self.debug('_'*50)
+        self.debug('[new conversion]')
+        self.debug('\tfrom_docx starting')
+
+        if not self.overwrite and os.path.exists(self.txt.path):
+            return self.txt.path
+
+        try:
+            self.debug("\tfrom_docx", "creating file", self.txt.path)
+            self.txt.doc = open(self.txt.path, "w")
+            self.debug("\tfrom_docx", "file created", self.txt.path)
+        except Exception, e:
+            self.debug("\t*from_docx fail to create", self.txt.path)
+            self.debug(e)
             return ''
 
-        try:
-            if not os.path.exists(self.savein):
-                self.make_dir(self.savein)
-        except:
-            self._debug("*", "from_doc", self.savein, "review folder")
-
-        if not self.foverwrite and os.path.exists(self.txt_path):
-            self._debug(self.txt_path, "yet exists")
-            return self.txt_path
-
-
-        try:
-            self._debug("from_doc", "dispatching word")
-            # w = win32com.client.Dispatch("Word.Application")
-            # w.visible = 0
-            cerrar = False
-            if not self.msword:
-                self.msword = client.DispatchEx("Word.Application") # Using DispatchEx for an entirely new Word instance
-                self.msword.Visible = False
-                cerrar = True
-
-            try:
-                self._debug("from_doc", "opening file", self.temp_path)
-                # wb = self.msword.Documents.Open(self.temp_path)
-
-                # http://msdn.microsoft.com/en-us/library/bb216319%28office.12%29.aspx
-                # wb = self.msword.Documents.OpenNoRepairDialog(
-                wb = self.msword.Documents.Open(
-                    FileName = self.temp_path, 
-                    ConfirmConversions = False, 
-                    ReadOnly = True, 
-                    AddToRecentFiles = False, 
-                    # PasswordDocument, 
-                    # PasswordTemplate, 
-                    Revert = True, 
-                    # WritePasswordDocument, 
-                    # WritePasswordTemplate, 
-                    # Format, 
-                    # Encoding, 
-                    Visible = False, 
-                    # OpenConflictDocument, 
-                    OpenAndRepair = True, 
-                    # DocumentDirection, 
-                    NoEncodingDialog = True
-                    )
-
-            except Exception, e:
-                self._debug("from_doc", "fail open file with Word", e)
-            try:
-                self._debug("from_doc", "saving file", self.txt_path)
-                wb.SaveAs(self.txt_path, FileFormat=2)
-            except Exception, e:
-                self._debug("from_doc", "fail to save file", e)
-
-            self._debug("from_doc", "closing file")
-            wb.Close()
-            self._debug("from_doc", "closing word office")
-            if cerrar:
-                self.msword.Quit()
-            return self.txt_path
-        except Exception, e:
-            self._debug("*", "from_doc", "fail Dispatch word", e)
-            self._debug("*", "from_doc", "removing ", self.txt_path)
-            self.remove_file(self.txt_path)
-        return ''
-
-    def from_docx(self, hero="python-docx"):
-        # TODO: assert fext is accurate
-
-        self._debug('starting docx to txt')
-        try:
-            assert os.path.isfile(self.temp_path)
-        except:
-            self._debug("*", "from_docx", self.temp_path, "is not a file")
-            return "0"
-
-        try:
-            if not os.path.exists(self.savein):
-                self.make_dir(self.savein)
-        except:
-            self._debug("*", "from_docx", self.savein, "review folder")
-
-        if not self.foverwrite and os.path.exists(self.txt_path):
-            self._debug(self.txt_path, "yet exists")
-            return self.txt_path
-
-        try:
-            self._debug("from_docx", "creating file", self.txt_path)
-            self.txt_doc = open(self.txt_path, "w")
-            self._debug("from_docx", "file created", self.txt_path)
-        except:
-            self._debug("*", "from_docx", "fail to create", self.txt_path)
-            return ''
-
-        self._debug('from_docx', 'hero =', hero)
+        self.debug('\tfrom_docx', 'hero =', hero)
         if hero == "python-docx":
-            self._debug('from_docx', 'starting python-docx')
-            doc_ = docx.opendocx(self.temp_path)
+            self.debug('\tfrom_docx using python-docx')
+            doc_ = docx.opendocx(self.file.path)
             for line in docx.getdocumenttext(doc_):
                 try:
                     line = latin2ascii(unicode(line, 'utf-8', 'ignore'))
@@ -368,18 +329,18 @@ class aTXT(object):
                     line = line.encode('utf-8', 'replace')
                 except:
                     pass
-                self.txt_doc.write(line + '\n')
-            self.txt_doc.close()
-            return self.txt_path
+                self.txt.doc.write(line + '\n')
+            self.txt.doc.close()
+            self.debug("\tfinish work with .docx")
+            return self.txt.path
         try:
-            self.txt_doc.write(self.from_docx_())
+            self.txt.doc.write(self.from_docx_())
         except Exception, e:
-            self._debug("*", 'from_docx_ error', e)
+            self.debug("\t* from_docx_ error", e)
             return ''
-        return self.txt_path
+        return self.txt.path
 
     def from_docx_(self):
-        # TODO: assert fext is accurate
         '''
          http://stackoverflow.com/questions/42482/best-way-to-extract-text-from-a-word-doc-
          without-using-com-automation
@@ -387,26 +348,26 @@ class aTXT(object):
         try:
             from xml.etree.cElementTree import XML
         except:
-            self._debug("*", "from_docx_ failed XML")
+            self.debug("*", "from_docx_ failed XML")
             from xml.etree.ElementTree import XML
 
         WORD_NAMESPACE = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
         PARA = WORD_NAMESPACE + 'p'
         TEXT = WORD_NAMESPACE + 't'
 
-        document = zp.ZipFile(self.temp_path)
+        document = zp.ZipFile(self.file.path)
 
-        self._debug("from_docx_ zipfile open document")
+        self.debug("\tfrom_docx_ zipfile open document")
         xml_content = document.read('word/document.xml')
 
-        self._debug("from_docx_ close document")
+        self.debug("\ttfrom_docx_ close document")
         document.close()
 
-        self._debug("from_docx_ XML(xml_content)")
+        self.debug("\tfrom_docx_ XML(xml_content)")
         tree = XML(xml_content)
         paragraphs = []
 
-        self._debug("from_docx_ tree.iterator")
+        self.debug("\tfrom_docx_ tree.iterator")
         for paragraph in tree.getiterator(PARA):
             line = [
                 node.text for node in paragraph.getiterator(TEXT) if node.text]
@@ -423,156 +384,218 @@ class aTXT(object):
                 paragraphs.append(line)
         return '\n\n'.join(paragraphs)
 
-    def from_pdf(self, hero="xpdf"):
-        # TODO: assert fext is accurate
-
-        self._debug('starting pdf to txt')
+    def from_doc(self, filepath='', savein='', overwrite='', uppercase=''):
         try:
-            assert os.path.isfile(self.temp_path)
-        except:
-            self._debug("*", "from_pdf", self.temp_path, "is not a file")
-            return ''
-        try:
-            if not os.path.exists(self.savein):
-                self.make_dir(self.savein)
-        except:
-            self._debug("*", "from_pdf", self.savein, "review folder")
-
-        if not self.foverwrite and os.path.exists(self.txt_path):
-            self._debug(self.txt_path, "yet exists")
-            return self.txt_path
-
-        try:
-            self._debug("from_pdf", "opening to read", self.temp_path)
-            doc_ = file(self.temp_path, 'rb')
+            self.set(filepath, savein, overwrite, uppercase)
         except Exception, e:
-            self._debug("*", "from_pdf", e)
+            self.debug(e)
+
+        self.debug('_'*50)
+        self.debug('[new conversion]')
+        self.debug('\tfrom_doc starting')
+
+        if not self.overwrite and os.path.exists(self.txt.path):
+            return self.txt.path
+
+        cerrar = False
+
+        if not self.msword:
+            try:
+                self.msword = client.DispatchEx("Word.Application") # Using DispatchEx for an entirely new Word instance
+                self.msword.Visible = False
+                cerrar = True
+            except Exception, e:
+                self.debug("fail Dispatching Word.Application")
+                return ''
+
+            try:
+                self.debug("from_doc", "opening file", self._path)
+                # http://msdn.microsoft.com/en-us/library/bb216319%28office.12%29.aspx
+                # wb = self.msword.Documents.Open(
+                wb = self.msword.Documents.OpenNoRepairDialog(
+                    FileName = self._path,
+                    ConfirmConversions = False,
+                    ReadOnly = True,
+                    AddToRecentFiles = False,
+                    # PasswordDocument,
+                    # PasswordTemplate,
+                    Revert = True,
+                    # WritePasswordDocument,
+                    # WritePasswordTemplate,
+                    # Format,
+                    # Encoding,
+                    Visible = False,
+                    # OpenConflictDocument,
+                    OpenAndRepair = True,
+                    # DocumentDirection,
+                    NoEncodingDialog = True
+                    )
+
+            except Exception, e:
+                self.debug("from_doc", "fail open file with Word", e)
+                self.remove_file(self.txt.path)
+                return ''
+
+            try:
+                self.debug("from_doc", "saving file", self.txt.path)
+                wb.SaveAs(self.txt.path, FileFormat=2)
+            except Exception, e:
+                self.debug("from_doc", "fail to save file", e)
+                self.remove_file(self.txt.path)
+                return ''
+
+            self.debug("from_doc", "closing file")
+            wb.Close()
+            self.debug("from_doc", "closing word office")
+            if cerrar:
+                self.msword.Quit()
+            return self.txt.path
+        return ''
+
+    def from_pdf(self, hero='xpdf', filepath='', savein='', overwrite='', uppercase=''):
+        try:
+            self.set(filepath, savein, overwrite, uppercase)
+        except Exception, e:
+            self.debug(e)
+        self.debug('_'*50)
+        self.debug('[new conversion]')
+        self.debug('starting pdf to txt')
+
+        if not self.overwrite and os.path.exists(self.txt.path):
+            self.debug(self.txt.path, "yet exists")
+            return self.txt.path
+
+        try:
+            self.debug("from_pdf opening to read", self.file.path)
+            doc_ = file(self.file.path, 'rb')
+        except Exception, e:
+            self.debug("* from_pdf", e)
             return ''
         try:
-            self._debug("from_pdf", "creating to write", self.txt_path)
-            self.txt_doc = file(self.txt_path, "wb")
-            self._debug("from_pdf created", self.txt_basename)
+            self.debug("from_pdf creating to write", self.txt.path)
+            f = file(self.txt.path, "wb")
+            self.debug("from_pdf created", self.txt.basename)
         except Exception, e:
-            self._debug("*", "from_pdf", e)
+            self.debug("* from_pdf", e)
             return ''
+
+        self.debug("\thero:" + hero)
 
         if hero == "pdfminer":
             try:
-                self._debug("from_pdf", "creating PDFResourceManager")
+                self.debug("from_pdf", "creating PDFResourceManager")
                 resourceman = pdfinterp.PDFResourceManager()
-                self._debug("from_pdf",  "using TextConverter")
+                self.debug("from_pdf",  "using TextConverter")
                 device = converter.TextConverter(
-                    resourceman, self.txt_doc, laparams=layout.LAParams())
-                self._debug("from_pdf",  "using PDFPageInterpreter")
+                    resourceman, f, laparams=layout.LAParams())
+                self.debug("from_pdf",  "using PDFPageInterpreter")
                 interpreter = pdfinterp.PDFPageInterpreter(resourceman, device)
                 for page in pdfpage.PDFPage.get_pages(doc_):
                     interpreter.process_page(page)
-                self.txt_doc.close()
+                f.close()
                 device.close()
             except Exception, e:
-                self._debug("*", "from_pdf", e)
+                self.debug("* from_pdf", e)
                 return ''
 
         if hero == "xpdf":
             try:
-                self._debug("from_pdf", "xpdf")
+                self.debug("from_pdf", "xpdf")
                 try:
-                    options = [self.pdftotext, unicode(self.temp_path), '-']
+                    options = [self.pdftotext, unicode(self.file.path), '-']
                 except:
-                    options = [self.pdftotext, self.temp_path, '-']
+                    options = [self.pdftotext, self.file.path, '-']
 
-                self._debug("from_pdf", options)
-
-                self._debug("from_pdf", "starting subprocess")
-                output = sub.call(options, stdout=self.txt_doc)
-                self._debug("from_pdf", "finisehd subprocess")
+                self.debug("from_pdf", options)
+                self.debug("from_pdf", "starting subprocess")
+                output = sub.call(options, stdout=f)
+                self.debug("from_pdf", "finished subprocess")
                 if output == 0:
-                    self._debug("from_pdf", "No error.")
+                    self.debug("from_pdf", "No error.")
                 elif output == 1:
-                    self._debug("from_pdf", "Error opening a PDF file.")
+                    self.debug("from_pdf", "Error opening a PDF file.")
                 elif output == 2:
-                    self._debug("from_pdf", "Error opening an output file.")
+                    self.debug("from_pdf", "Error opening an output file.")
                 elif output == 3:
-                    self._debug(
+                    self.debug(
                         "from_pdf", "Error related to PDF permissions.")
                 else:
-                    self._debug("from_pdf", "Other error.")
+                    self.debug("from_pdf", "Other error.")
             except Exception, e:
-                self._debug("*", "from_pdf", e)
-        self.txt_doc.close()
+                self.debug("*", "from_pdf", e)
+        f.close()
         doc_.close()
-        return self.txt_path
-
-    def from_pdf_ocr(self, hero="xpdf",force=False):
-        self._debug('starting from_pdf_ocr')
+        return self.txt.path
+    
+    def from_pdf_ocr(self, hero="xpdf", filepath='', savein='', overwrite='', uppercase='',force=False):
         try:
-            assert os.path.isfile(self.temp_path)
-        except:
-            self._debug("*", "from_pdf_ocr", self.temp_path, "is not a file")
+            self.set(filepath, savein, overwrite, uppercase)
+        except Exception, e:
+            self.debug(e)
+        self.debug('_'*50)
+        self.debug('[new conversion]')
+        self.debug('starting pdf_ocr to txt')
+
+        if not self.overwrite and os.path.exists(self.txt.path):
+            self.debug(self.txt.path, "yet exists")
+            return self.txt.path
+
+        self.debug("from_pdf_ocr", "creating temporary file of file")
+        try:
+            self.file.create_temp()
+        except Exception, e:
+            self.debug("fail to call get_temp()")
+            self.debug(e)
             return ''
-        try:
-            if not os.path.exists(self.savein):
-                self.make_dir(self.savein)
-        except:
-            self._debug("*", "from_pdf_ocr", self.savein, "review folder")
-
-        if not self.foverwrite and os.path.exists(self.txt_path):
-            self._debug(self.txt_path, "yet exists")
-            return self.txt_path
 
         if not force:
-            cmd = self.pdffonts + ' ' + self.temp_path
-
-            self._debug("cmd", cmd)
+            cmd = self.pdffonts + ' ' + self.file._path
+            self.debug("cmd", cmd)
             try:
-                self._debug("from convert", "OCR?")
+                self.debug("from convert", "OCR?")
                 o_ = sub.check_output(cmd, shell=True)
 
-                self._debug("from convert pdffonts")
-                # self._debug("\n" + o_)
-                self._debug(o_.count('yes'))
-                self._debug(o_.count('Type'))
-                self._debug(o_.count('no'))
+                self.debug("from convert pdffonts")
+                self.debug("\n" + o_)
 
                 if o_.count('yes') or o_.count('Type') or o_.count('no'):
-                    self._debug('ORC is not necessary!')
+                    self.debug('ORC is not necessary!')
                     return self.from_pdf(hero)
-                    # if self.txt_size() > (1<<2L):
-                    #     return newfile
-                    # return self.from_pdf_ocr(hero=hero, force=True)
-            except:
-                self._debug("*", "from convert", "looks like OCR is necessary")
+            except Exception, e:
+                self.debug("* from_pdf_ocr", "looks like OCR is necessary")
+                self.debug(e)
+
+
 
         options = [self.pdftopng,
-                   self.temp_path,
-                   os.path.join(self.tempdir, 'image')]
+                   self.file._path,
+                   os.path.join(self.file._tempdir, 'image')]
+
         options = ' '.join(options)
-        self._debug("from_pdf_ocr", "set options pdftopng:", options)
+        self.debug("from_pdf_ocr", "set options pdftopng:", options)
         try:
-            self._debug("from_pdf_ocr", "calling pdftopng")
+            self.debug("from_pdf_ocr", "calling pdftopng")
             sub.call(options, shell=True)
-            # sub.call('open '+tpath, shell=True)
-        except:
-            self._debug("*", "from_pdf_ocr", "fail to use pdftopng")
+        except Exception, e:
+            self.debug("*", "from_pdf_ocr", "fail to use pdftopng")
+            self.debug(e)
             return ''
 
-        self._debug("from_pdf_ocr", "creating temp txt")
-        txt = tmp.NamedTemporaryFile(dir=self.tempdir, delete=False)
-        self._debug("from_pdf_ocr", "created txt", txt.name)
+        txt = open(self.txt.path, "w")
+
         page = 1
-        for root, dirs, files in wk.walk(self.tempdir, tfiles=['.png']):
+        for root, dirs, files in wk.walk(self.file._tempdir, tfiles=['.png']):
             for f in files:
                 p_ = os.path.join(root, f.name)
                 o_ = os.path.join(root, 'output')
                 cmd = [self.tesseract_binary, p_, o_, '-l', 'spa']
                 cmd = ' '.join(cmd)
                 try:
-                    self._debug("from_pdf_ocr", "processing page " + str(page))
+                    self.debug("from_pdf_ocr", "processing page " + str(page))
                     page += 1
                     sub.call(cmd, shell=True)
                 except:
-                    self._debug(
-                        "*", "from_pdf_ocr", "fail subprocess with", cmd)
+                    self.debug("* from_pdf_ocr", "fail subprocess with", cmd)
                     return ''
 
                 f_ = file(o_ + '.txt', 'r')
@@ -580,73 +603,64 @@ class aTXT(object):
                     txt.write(line)
                 f_.close()
         txt.close()
-        try:
-            self._debug(
-                "from_pdf_ocr", "rename ", txt.name, "to", self.txt_basename)
-            os.rename(txt.name, self.txt_path)
-        except:
-            self._debug("*", "from_pdf_ocr", "fail rename")
-            return ''
 
         try:
-            self._debug("from_pdf_ocr", "deleting temp directory", self.tempdir)
-            sh.rmtree(self.tempdir)
+            self.debug("from_pdf_ocr", "deleting temp directory", self.file._tempdir)
+            sh.rmtree(self.file._tempdir)
         except:
-            self._debug("*", "from_pdf_ocr", "fail delete", self.tempdir)
-            self._debug("*", "from_pdf_ocr", "please remove manually")
-
-        return self.txt_path
+            self.debug("*", "from_pdf_ocr", "fail delete", self.file._tempdir)
+            self.debug("*", "from_pdf_ocr", "please remove manually")
+        return self.txt.path
 
     def upper(self):
-        if not os.path.exists(self.txt_path):
-            self._debug(self.txt_path, "Not Found")
-            return self.txt_path
+        if not os.path.exists(self.txt.path):
+            self.debug(self.txt.path, "Not Found")
+            return self.txt.path
 
         temp = tmp.NamedTemporaryFile(mode='w', delete=False)
 
-        with open(self.txt_path, 'r') as f:
+        with open(self.txt.path, 'r') as f:
             for line in f:
                 try:
                     line = remove_accents(line)
                 except:
-                    self._debug("from upper", "fail remove_accents")
+                    self.debug("from upper", "fail remove_accents")
                 try:
                     line = latin2ascii(line)
                 except:
-                    self._debug("from upper", "fail latin2ascii")
+                    self.debug("from upper", "fail latin2ascii")
                 try:
                     line = line.encode('ascii', 'replace')
                 except:
-                    self._debug("from upper", "fail encode(ascii)")
+                    self.debug("from upper", "fail encode(ascii)")
                 try:
                     line = line.upper()
                 except:
-                    self._debug("*", "from upper", "fail .upper()")
+                    self.debug("*", "from upper", "fail .upper()")
                 temp.write(line)
             temp.close()
-            self.remove_file(self.txt_path)
+            self.remove_file(self.txt.path)
             try:
-                self._debug("moving tempfile", temp.name)
-                sh.copy2(temp.name, self.txt_path)
+                self.debug("moving tempfile", temp.name)
+                sh.copy2(temp.name, self.txt.path)
             except:
-                self._debug("*", "fail to move tempfile", temp.name)
+                self.debug("*", "fail to move tempfile", temp.name)
                 self.remove_file(temp.name)
                 return ''
-        return self.txt_path
+        return self.txt.path
 
-    def txt_open(self):
-        return file(self.txt_path, "r")
+    def convert(self, heroes=['xpdf', 'xml'],filepath = '', savein='', overwrite='', uppercase=''):
 
-    def convert(self, heroes=['xpdf', 'xml']):
-        self._debug('converting...')
+        self.debug('from convert')
 
-        if self.fext.lower().endswith('pdf'):
-            return self.from_pdf_ocr(heroes[0])
 
-        if self.fext.lower().endswith('docx'):
-            return self.from_docx(heroes[1])
+        if filepath.lower().endswith('pdf'):
+            return self.from_pdf_ocr(hero=heroes[0],filepath=filepath,savein=savein,overwrite=overwrite,uppercase=uppercase)
 
-        if self.fext.lower().endswith('doc'):
-            return self.from_doc()
+        if filepath.lower().endswith('docx'):
+            return self.from_docx(hero=heroes[1],filepath=filepath,savein=savein,overwrite=overwrite,uppercase=uppercase)
+
+        if filepath.lower().endswith('doc'):
+            return self.from_doc(filepath=filepath,savein=savein,overwrite=overwrite,uppercase=uppercase)
 
         return "Fail convertion"

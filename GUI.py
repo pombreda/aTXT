@@ -51,7 +51,6 @@ def debug(msg, *args):
             for arg in args:
                 log.debug(arg)
 
-
 class ProcessLib(QtCore.QThread):
     procDone = QtCore.Signal(bool)
     partDone = QtCore.Signal(int)
@@ -74,15 +73,8 @@ class ProcessLib(QtCore.QThread):
         self.message.emit(msg)
         self.partDone.emit(0)
 
-        msword = None
 
-        try:
-            from win32com import client
-            msword = client.DispatchEx("Word.Application")
-            msword.Visible = False
-        except:
-            debug("It's not available win32com")
-            pass
+        atxt = aTXT()
 
         conta = 0
         for root, dirs, files in wk.walk(
@@ -132,7 +124,9 @@ class ProcessLib(QtCore.QThread):
                     msg = "trying to encode utf-8 " + filepath
                     debug(msg)
                     self.message.emit(msg)
+
                     filepath = to_unicode(filepath,'utf-8')
+                    filepath = filepath.encode('utf-8')
                 except:
                     msg = 'fail to encode filepath'
                     debug(msg)
@@ -142,21 +136,20 @@ class ProcessLib(QtCore.QThread):
                 debug(msg)
                 self.message.emit(msg)
 
-                txt = aTXT(
-                    filepath=filepath,
-                    debug=DEBUG,
-                    uppercase=self.window.uppercase,
-                    overwrite=self.window.overwrite,
-                    savein=self.window.savein,
-                    msword = msword
-                )
+                
 
                 try:
                     msg = 'conversion started'
                     debug(msg)
                     self.message.emit(msg)
 
-                    txt.convert(heroes=self.window.heroes)
+                    atxt.convert(
+                        filepath=filepath,
+                        uppercase=self.window.uppercase,
+                        overwrite=self.window.overwrite,
+                        savein=self.window.savein
+                    )
+
                     msg = 'finish conversion'
                     debug(msg)
                     self.message.emit(msg)
@@ -177,14 +170,12 @@ class ProcessLib(QtCore.QThread):
         debug(msg)
         self.message.emit(msg)
 
-        if msword:
-            try:
-                debug("closing word application")
-                msword.Quit()
-                del msword
-            except Exception, e:
-                debug("fail to quit from word application")
-                debug(e)
+        try:
+            debug("closing word application")
+            atxt.close()
+        except Exception, e:
+            debug("fail to quit from word application")
+            debug(e)
 
         self.procDone.emit(True)
         self.exit()
@@ -381,7 +372,7 @@ class Window(QtGui.QWidget):
         self.checkDOC.setCheckState(self.checked)
         if not sys.platform in ["win32"]:
             self.checkDOC.setCheckState(self.unchecked)
-            self.checkDOc.setEnabled(False)
+            self.checkDOC.setEnabled(False)
             
         self.checkOverwrite.setCheckState(self.checked)
         self.saveinLineEdit.setText("TXT")

@@ -3,12 +3,13 @@
 # @Author: usuario
 # @Date:   2014-09-05 07:45:22
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2014-09-29 23:04:19
+# @Last Modified time: 2014-10-07 15:35:23
 
 __author__ = 'Jonathan Prieto'
 import os
 import sys
 import scandir
+from latin2ascii import enconding_path
 
 from kitchen.text.converters import getwriter, to_unicode
 
@@ -34,11 +35,8 @@ def walk(top, topdown=True, onerror=None, flinks=False, tfiles=['*'], sdirs=[],
     :return: a generator with values, top, root-path and dirs, nondirs
                     ( class from scandir library )
     """
-    top = to_unicode(top, 'utf-8')
-    try:
-        top = top.encode('utf-8')
-    except:
-        pass
+    
+    top = enconding_path(top)
         
     try:
         level = int(level)
@@ -124,6 +122,6 @@ def walk_size(dir='', sdirs=[], level=0, tfiles=['*']):
                 filepath = os.path.join(root, f.name)
                 total_size += os.path.getsize(filepath)
                 count_files += 1
-    except :
-       pass
+    except Exception, e:
+       print e
     return [count_files, total_size]

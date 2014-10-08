@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 # @Author: usuario
 # @Date:   2014-09-14 17:02:20
-# @Last Modified by:   usuario
-# @Last Modified time: 2014-09-15 11:10:23
+# @Last Modified by:   Jonathan Prieto 
+# @Last Modified time: 2014-10-07 14:42:00
 
 from unicodedata import normalize, combining
 from unidecode import *
+from kitchen.text.converters import to_unicode
+import sys
 
 __version__ = "0.1"
 __all__ = ["latin2ascii", "remove_accents"]
@@ -113,10 +115,22 @@ def latin2ascii(s):
     return s
 
 
-def remove_accents(self, string):
+def remove_accents(s):
     try:
-        nkfd_form = normalize('NFKD', unicode(string))
-        string = u''.join([c for c in nkfd_form if not combining(c)])
+        nkfd_form = normalize('NFKD', unicode(s))
+        s = u''.join([c for c in nkfd_form if not combining(c)])
     except Exception, e:
-        self._debug(remove_accents, e, string)
-    return string
+        self._debug(remove_accents, e, s)
+    return s
+
+def enconding_path(s):
+    if sys.platform in ["darwin"]:
+        s = to_unicode(s)
+        try:
+            s = s.encode('utf-8', 'replace')
+        except:
+            pass
+    elif sys.platform in ["win32"]:
+        s = to_unicode(s, 'utf-8')
+        # s = s.encode('utf-8', 'replace')
+    return s

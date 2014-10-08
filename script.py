@@ -2,12 +2,11 @@
 
 from aTXT import aTXT
 import walking as wk
-import os
-import shutil as sh
-import tempfile as tmp
 import sys
+import os
+from latin2ascii import enconding_path
 
-from kitchen.text.converters import getwriter
+from kitchen.text.converters import getwriter, to_unicode
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
@@ -15,11 +14,14 @@ sys.stdout = UTF8Writer(sys.stdout)
 
 def main():
 
-    DIR = "/Users/usuario/Documents/bogotá"
-    LEVEL = 0
+    # DIR = "C:\\Users\\d555\\Desktop\\doc"
+    # DIR = "/Users/usuario/Documents/bogotá"
+    DIR = "C:\\Users\\A51708187\\Desktop\\bogotá"
+
+    LEVEL = 2
     OVERWRITE = True
     UPPERCASE = False
-    TFILES = ['.pdf']
+    TFILES = ['.doc']
     heroes = ['xpdf', 'xml']
 
     c_, s_ =  wk.walk_size(DIR, sdirs=[''], level=LEVEL, tfiles=TFILES)
@@ -29,9 +31,8 @@ def main():
     for root, dirs, files in wk.walk(DIR, level=LEVEL, tfiles=TFILES):
 
         for f in files:
-            
             man.convert(
-                heroes = heroes,
+                heroes= heroes,
                 filepath=f.path,
                 savein='TXT', 
                 overwrite=OVERWRITE, 

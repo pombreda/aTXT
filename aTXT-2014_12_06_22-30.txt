@@ -1,0 +1,35 @@
+12/06/14 10:30:21 PM |  aTXT Version: 0.2 
+12/06/14 10:30:21 PM |  Set Configuration 
+12/06/14 10:30:21 PM |  importing win32 
+12/06/14 10:30:21 PM |  It's not available win32com 
+12/06/14 10:30:21 PM |  set thirdy paths for darwin mac 
+12/06/14 10:30:21 PM |  set path for tesseract OCR 
+12/06/14 10:30:21 PM |  trying to find tesseract binary by which command 
+12/06/14 10:30:21 PM |  * fail with which commnand
+12/06/14 10:30:21 PM |  set tesseract:  /usr/local/bin/tesseract
+12/06/14 10:30:21 PM |  Ready to start any conversion 
+12/06/14 10:30:21 PM |   
+12/06/14 10:30:21 PM |  from convert 
+12/06/14 10:30:21 PM |  Set configuration for file: 
+12/06/14 10:30:21 PM |  del file in set() method. 
+12/06/14 10:30:21 PM |  FileClass initialitation with/Users/usuario/Documents/prueba/1.dat 
+12/06/14 10:30:21 PM |  Setting basename, name, extension, dirname 
+12/06/14 10:30:21 PM |  test: (exist dirname, exist filepath)
+12/06/14 10:30:21 PM |  (True, True)
+12/06/14 10:30:21 PM |  Successful instance of file 
+12/06/14 10:30:21 PM |  Directory Save In is not a directory 
+12/06/14 10:30:21 PM |  savein: /Users/usuario/Documents/prueba/TXT 
+12/06/14 10:30:21 PM |  File will be save in /Users/usuario/Documents/prueba/TXT
+12/06/14 10:30:21 PM |  Creating .txt file /Users/usuario/Documents/prueba/TXT/1.txt
+12/06/14 10:30:21 PM |  FileClass initialitation with/Users/usuario/Documents/prueba/TXT/1.txt 
+12/06/14 10:30:21 PM |  Setting basename, name, extension, dirname 
+12/06/14 10:30:21 PM |  is not a file /Users/usuario/Documents/prueba/TXT/1.txt
+12/06/14 10:30:21 PM |  test: (exist dirname, exist filepath)
+12/06/14 10:30:21 PM |  (True, False)
+12/06/14 10:30:21 PM |  creating a temporary directory 
+12/06/14 10:30:21 PM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpndm8_c 
+12/06/14 10:30:21 PM |  from temp() copy  1.dat to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpndm8_c
+12/06/14 10:30:21 PM |  change name for security: temp.dat 
+12/06/14 10:30:21 PM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpndm8_c
+12/06/14 10:30:21 PM |  Close aTXT :::::::::::::::::::::::::::::::::::::::::::::::::: 
+12/06/14 10:30:21 PM |  Finish work 

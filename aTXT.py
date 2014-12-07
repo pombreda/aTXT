@@ -24,7 +24,8 @@ from kitchen.text.converters import getwriter, to_unicode
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-log_filename = "aTXT" + datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
+log_filename = "aTXT" + \
+    datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
 # log_filename = "LOG.txt"
 
 
@@ -62,7 +63,7 @@ class File(object):
         self.debug('FileClass initialitation with' + path)
         if not debug:
             self._debug = debug
-        
+
         self.path = enconding_path(path)
         self.debug('Setting basename, name, extension, dirname')
         try:
@@ -144,7 +145,7 @@ class File(object):
             self.debug("deleting temp directory", self._tempdir)
             sh.rmtree(self._tempdir)
         except:
-            self.debug( "fail delete", self._tempdir)
+            self.debug("fail delete", self._tempdir)
             self.debug("please remove manually")
         try:
             del self._name
@@ -154,6 +155,7 @@ class File(object):
             pass
             return False
         return True
+
 
 class aTXT(object):
     overwrite = True
@@ -215,7 +217,7 @@ class aTXT(object):
 
         self.debug('set path for tesseract OCR')
 
-        if str(os.name) == 'nt':
+        if str(os.name) == 'nt': # windows 7 or later
             self.tesseract_binary = '"c:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe"'
         else:
             self.tesseract_binary = "/usr/local/bin/tesseract"
@@ -272,7 +274,7 @@ class aTXT(object):
         try:
             del self.file
         except Exception, e:
-            self.debug("del file in set() method. It's not.")
+            self.debug("del file in set() method.")
 
         # FILEPATH
 
@@ -285,7 +287,7 @@ class aTXT(object):
             self.debug("*" * 50)
         # SAVE IN PATH
         self.savein = enconding_path(savein)
-       
+
         if not os.path.isdir(self.savein):
             self.debug('Directory Save In is not a directory')
             self.savein = os.path.join(self.file.dirname, self.savein)
@@ -420,27 +422,28 @@ class aTXT(object):
                 return ''
 
         try:
-            self.debug('from_doc', "exists temp file: " + str(os.path.exists(self.file._path)))
+            self.debug(
+                'from_doc', "exists temp file: " + str(os.path.exists(self.file._path)))
             self.debug("from_doc", "opening file", self.file._path)
             # http://msdn.microsoft.com/en-us/library/bb216319%28office.12%29.aspx
             # wb = self.msword.Documents.Open(
             wb = self.msword.Documents.OpenNoRepairDialog(
-                FileName = self.file._path,
-                ConfirmConversions = False,
-                ReadOnly = True,
-                AddToRecentFiles = False,
+                FileName=self.file._path,
+                ConfirmConversions=False,
+                ReadOnly=True,
+                AddToRecentFiles=False,
                 # PasswordDocument,
                 # PasswordTemplate,
-                Revert = True,
+                Revert=True,
                 # WritePasswordDocument,
                 # WritePasswordTemplate,
                 # Format,
                 # Encoding,
-                Visible = False,
-                OpenAndRepair = True,
+                Visible=False,
+                OpenAndRepair=True,
                 # DocumentDirection,
-                NoEncodingDialog = True
-                )
+                NoEncodingDialog=True
+            )
 
         except Exception, e:
             self.debug("from_doc", "fail open file with Word", e)
@@ -608,6 +611,10 @@ class aTXT(object):
         txt.close()
         return self.txt.path
 
+    def from_dat(self):
+        sh.copy(self.file.path, self.txt.path)
+        return self.txt.path
+
     def upper(self):
         if not os.path.exists(self.txt.path):
             self.debug(self.txt.path, "Not Found")
@@ -672,16 +679,19 @@ class aTXT(object):
         except Exception, e:
             self.debug("fail to call get_temp()")
             self.debug(e)
-            return ''
+            return ''   
 
         if self.file.extension.endswith('pdf'):
             newpath = self.from_pdf_ocr(hero=heroes[0])
 
         elif self.file.extension.endswith('docx'):
-           newpath = self.from_docx(hero=heroes[1])
+            newpath = self.from_docx(hero=heroes[1])
 
         elif self.file.extension.endswith('doc'):
             newpath = self.from_doc()
+
+        elif self.file.extension.endswith('.dat'):
+            newpath = self.from_dat()
 
         if self.uppercase:
             self.upper()

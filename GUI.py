@@ -12,7 +12,7 @@ import datetime
 from latin2ascii import enconding_path
 
 
-from kitchen.text.converters import getwriter 
+from kitchen.text.converters import getwriter
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
@@ -25,7 +25,8 @@ DEBUG = True
 
 # log_filename = "LOG.txt"
 
-log_filename = "aTXT" + datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log"
+log_filename = "aTXT" + \
+    datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log"
 
 log.basicConfig(
     filename=log_filename, filemode='w',
@@ -48,6 +49,7 @@ def debug(msg, *args):
             log.debug(msg)
             for arg in args:
                 log.debug(arg)
+
 
 class ProcessLib(QtCore.QThread):
     procDone = QtCore.Signal(bool)
@@ -75,7 +77,6 @@ class ProcessLib(QtCore.QThread):
         self.window.buttonStart.setEnabled(False)
         self.window.buttonStop.setEnabled(True)
 
-
         self.partDone.emit(0)
 
         try:
@@ -88,7 +89,7 @@ class ProcessLib(QtCore.QThread):
         # manager = self.window.aTXT
         manager = aTXT()
         conta = 0
-        
+
         for root, dirs, files in wk.walk(
                 self.window.directory,
                 level=self.window.level,
@@ -119,7 +120,7 @@ class ProcessLib(QtCore.QThread):
                     sh.rmtree(savein)
                     self.debug("Remove " + savein + " DONE")
             except Exception, e:
-                self.debug("Fail remove " +  savein)
+                self.debug("Fail remove " + savein)
 
             if self.window.clean:
                 continue
@@ -129,7 +130,7 @@ class ProcessLib(QtCore.QThread):
             for f in files:
                 conta += 1
                 try:
-                    porc = conta*100.0
+                    porc = conta * 100.0
                     porc /= self.window.totalfiles
                 except:
                     porc = 0
@@ -141,9 +142,10 @@ class ProcessLib(QtCore.QThread):
                 try:
                     self.debug('Converting File ... ')
                     if filepath.lower().endswith('.pdf'):
-                        self.debug('It\'ll take few seconds or minutes (OCR Reconigtion)  ')
+                        self.debug(
+                            'It\'ll take few seconds or minutes (OCR Reconigtion)  ')
                         self.debug('Please Wait')
-                    
+
                     manager.convert(
                         filepath=filepath,
                         uppercase=self.window.uppercase,
@@ -154,11 +156,9 @@ class ProcessLib(QtCore.QThread):
                 except Exception, e:
                     self.debug('Fail conversion aTXT calling from GUI.py')
                     self.debug(e)
-                    self.debug("*"*50)
+                    self.debug("*" * 50)
                 self.partDone.emit(porc)
                 self.debug("File finished")
-
-
 
         self.debug("Process finished")
         self.partDone.emit(100)
@@ -213,21 +213,21 @@ class WalkSize(QtCore.QThread):
                 self.debug("Directory does not exist")
             else:
                 self.debug('Directory is valid')
-        except :
+        except:
             self.debug("Fail review directory of search")
             return
-        
+
         dir = enconding_path(self.window.directory)
-        sdirs =[]
+        sdirs = []
         level = self.window.level
         tfiles = self.window.tfiles
 
         self.sizeCount.emit(0)
         self.fileCount.emit(0)
-        
+
         conta = 0
         tsize = 0
-        factor = 0.1 if level != 0 else 0.01*level
+        factor = 0.1 if level != 0 else 0.01 * level
         self.debug("wk.walk starting")
         for root, dirs, files in wk.walk(dir, sdirs=sdirs, level=level, tfiles=tfiles):
             if not self.FLAG:
@@ -238,7 +238,7 @@ class WalkSize(QtCore.QThread):
 
             for f in files:
                 conta += 1
-                self.partDone.emit(conta*factor)
+                self.partDone.emit(conta * factor)
                 self.debug("File #" + str(conta))
 
                 filepath = os.path.join(root, f.name)
@@ -247,9 +247,9 @@ class WalkSize(QtCore.QThread):
                 self.pathCount.emit(filepath)
 
                 self.debug("path: " + filepath)
-        
+
         self.debug("wk.walk Finish")
-        
+
         self.partDone.emit(100)
         self.fileCount.emit(conta)
         self.sizeCount.emit(str(tsize))
@@ -259,6 +259,7 @@ class WalkSize(QtCore.QThread):
         self.exit()
         return
 
+
 class Window(QtGui.QWidget):
     checked = QtCore.Qt.Checked
     unchecked = QtCore.Qt.Unchecked
@@ -267,7 +268,7 @@ class Window(QtGui.QWidget):
     totalsize = 0
 
     def __init__(self):
-        debug('GUI aTXT v'+__version__+" " +"="*30)
+        debug('GUI aTXT v' + __version__ + " " + "=" * 30)
         super(Window, self).__init__()
         debug('set configuration')
         self.config()
@@ -277,7 +278,6 @@ class Window(QtGui.QWidget):
         self.putBoxOptions()
         self.setLayout(self.layout)
         # self.aTXT = aTXT()
-
 
     def closeEvent(self, event):
         # do stuff
@@ -289,7 +289,7 @@ class Window(QtGui.QWidget):
         event.accept()
 
         # if self.canExit():
-        #     event.accept() # let the window close
+        # event.accept() # let the window close
         # else:
         #     event.ignore()
 
@@ -368,6 +368,9 @@ class Window(QtGui.QWidget):
         self.checkDOCX = QtGui.QCheckBox(".docx")
         self.checkDOCX.setCheckState(self.checked)
 
+        self.checkDAT = QtGui.QCheckBox(".dat")
+        self.checkDAT.setCheckState(self.checked)
+
         self.heroDOCX = QtGui.QComboBox()
         self.heroDOCX.addItems(['xml', 'python-docx'])
         self.checkDOC = QtGui.QCheckBox(".doc")
@@ -377,7 +380,6 @@ class Window(QtGui.QWidget):
             self.checkDOC.setCheckState(self.unchecked)
             self.checkDOC.setEnabled(False)
 
-
         layout = QtGui.QGridLayout()
 
         layout.addWidget(QtGui.QLabel("Type"), 0, 0)
@@ -386,7 +388,8 @@ class Window(QtGui.QWidget):
         layout.addWidget(self.heroPDF, 1, 1)
         layout.addWidget(self.checkDOCX, 2, 0)
         layout.addWidget(self.heroDOCX, 2, 1)
-        layout.addWidget(self.checkDOC, 4, 0)
+        layout.addWidget(self.checkDOC, 3, 0)
+        layout.addWidget(self.checkDAT, 4, 0)
 
         self.boxTypeFiles = QtGui.QGroupBox("Types Files")
         self.boxTypeFiles.setLayout(layout)
@@ -415,7 +418,6 @@ class Window(QtGui.QWidget):
         self.checkClean.setCheckState(self.unchecked)
         self.checkClean.setVisible(False)
 
-
         self.checkDebug = QtGui.QCheckBox("Debug")
         self.checkDebug.setCheckState(self.checked)
 
@@ -427,7 +429,6 @@ class Window(QtGui.QWidget):
         layout.addWidget(self.saveinBrowser, 3, 2)
         layout.addWidget(self.checkDebug, 5, 0)
         layout.addWidget(self.checkClean, 5, 1)
-
 
         self.boxSettings = QtGui.QGroupBox("Settings")
         self.boxSettings.setLayout(layout)
@@ -482,12 +483,13 @@ class Window(QtGui.QWidget):
         self.setProgress(0)
         self.checkPDF.setCheckState(self.checked)
         self.checkDOCX.setCheckState(self.checked)
+        self.checkDAT.setCheckState(self.checked)
 
         self.checkDOC.setCheckState(self.checked)
         if not sys.platform in ["win32"]:
             self.checkDOC.setCheckState(self.unchecked)
             self.checkDOC.setEnabled(False)
-            
+
         self.checkOverwrite.setCheckState(self.checked)
         # self.saveinLabel.setText("TXT")
         self.checkClean.setCheckState(self.unchecked)
@@ -536,7 +538,9 @@ class Window(QtGui.QWidget):
             self.tfiles.append('.docx')
         if self.checkDOC.isChecked():
             self.tfiles.append('.doc')
-        
+        if self.checkDAT.isChecked():
+            self.tfiles.append('.dat')
+
         debug("tfiles:", self.tfiles)
 
         self.setStatus('Calculating the total size of files ...')
@@ -560,11 +564,10 @@ class Window(QtGui.QWidget):
             self.progress_bar.setMaximum(100)
             self.thread.start()
 
-
         debug("Options:")
         self.savein = self.saveinLabel.text()
-        
-        debug('savein:' +  self.savein)
+
+        debug('savein:' + self.savein)
 
         self.heroes = [self.heroPDF.currentText(), self.heroDOCX.currentText()]
         debug('heroes: ' + str(self.heroes))
@@ -572,13 +575,13 @@ class Window(QtGui.QWidget):
         debug('debug: ' + str(self.debug))
 
         self.clean = self.checkClean.isChecked()
-        debug('clean: '+  str(self.clean))
+        debug('clean: ' + str(self.clean))
 
         self.uppercase = self.checkUPPER_CASE.isChecked()
-        debug("uppercase: "+  str(self.uppercase))
+        debug("uppercase: " + str(self.uppercase))
 
         self.overwrite = self.checkOverwrite.isChecked()
-        debug('overwrite: '+  str(self.overwrite))
+        debug('overwrite: ' + str(self.overwrite))
         return
 
     def Ready(self):
@@ -587,7 +590,6 @@ class Window(QtGui.QWidget):
         self.debug("Total Files: " + str(self.totalfiles))
         self.debug("Total Size: " + wk.size_str(self.totalsize))
         self.debug("Type Files: " + str(self.tfiles))
-
 
         try:
             self.stopProcess()

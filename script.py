@@ -15,13 +15,13 @@ sys.stdout = UTF8Writer(sys.stdout)
 def main():
 
     # DIR = "C:\\Users\\d555\\Desktop\\doc"
-    # DIR = "/Users/usuario/Documents/bogotá"
-    DIR = "C:\\Users\\A51708187\\Desktop\\bogotá"
+    DIR = "/Users/usuario/Documents/prueba/"
+    # DIR = "C:\\Users\\A51708187\\Desktop\\bogotá"
 
     LEVEL = 2
     OVERWRITE = True
     UPPERCASE = False
-    TFILES = ['.doc']
+    TFILES = ['.dat']
     heroes = ['xpdf', 'xml']
 
     c_, s_ =  wk.walk_size(DIR, sdirs=[''], level=LEVEL, tfiles=TFILES)

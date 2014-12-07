@@ -1,0 +1,74 @@
+12/06/14 11:38:09 PM |  GUI aTXT v0.1 ============================== 
+12/06/14 11:38:09 PM |  set configuration 
+12/06/14 11:38:09 PM |  set size of window 
+12/06/14 11:38:09 PM |  drawing box Directory 
+12/06/14 11:38:09 PM |  drawing box Options 
+12/06/14 11:38:40 PM |   
+12/06/14 11:38:40 PM |  from scanDir starting scanning
+12/06/14 11:38:40 PM |  directory:/Users/usuario/Documents/prueba 
+12/06/14 11:38:40 PM |  level:0 
+12/06/14 11:38:40 PM |  tfiles:
+12/06/14 11:38:40 PM |  ['.pdf', '.docx', '.dat']
+12/06/14 11:38:40 PM |  Starting Walking over Directory 
+12/06/14 11:38:40 PM |  Options: 
+12/06/14 11:38:40 PM |  savein:TXT 
+12/06/14 11:38:40 PM |  heroes: [u'xpdf', u'xml'] 
+12/06/14 11:38:40 PM |  created QThread for WalkSize 
+12/06/14 11:38:40 PM |  debug: <bound method Window.debug of <__main__.Window object at 0x106f85e60>> 
+12/06/14 11:38:40 PM |  clean: False 
+12/06/14 11:38:40 PM |  uppercase: False 
+12/06/14 11:38:40 PM |  overwrite: True 
+12/06/14 11:38:40 PM |  Trasversing directory 
+12/06/14 11:38:40 PM |  Directory is valid 
+12/06/14 11:38:40 PM |  wk.walk starting 
+12/06/14 11:38:40 PM |  File #1 
+12/06/14 11:38:40 PM |  path: /Users/usuario/Documents/prueba/1.dat 
+12/06/14 11:38:40 PM |  wk.walk Finish 
+12/06/14 11:38:40 PM |  Ready 
+12/06/14 11:38:40 PM |  Total Files: 1 
+12/06/14 11:38:40 PM |  Total Size: 1.0 kB 
+12/06/14 11:38:40 PM |  Type Files: ['.pdf', '.docx', '.dat'] 
+12/06/14 11:38:44 PM |  created QThread for ProcessLib 
+12/06/14 11:38:44 PM |  aTXT Version: 0.2 
+12/06/14 11:38:44 PM |  Set Configuration 
+12/06/14 11:38:44 PM |  importing win32 
+12/06/14 11:38:44 PM |  It's not available win32com 
+12/06/14 11:38:44 PM |  set thirdy paths for darwin mac 
+12/06/14 11:38:44 PM |  set path for tesseract OCR 
+12/06/14 11:38:44 PM |  trying to find tesseract binary by which command 
+12/06/14 11:38:44 PM |  * fail with which commnand
+12/06/14 11:38:44 PM |  set tesseract:  /usr/local/bin/tesseract
+12/06/14 11:38:44 PM |  Ready to start any conversion 
+12/06/14 11:38:44 PM |   
+12/06/14 11:38:44 PM |  Directory: /Users/usuario/Documents/prueba 
+12/06/14 11:38:44 PM |  Starting process over files in Directory: 
+12/06/14 11:38:44 PM |  File #1 
+12/06/14 11:38:44 PM |  Filepath: /Users/usuario/Documents/prueba/1.dat 
+12/06/14 11:38:44 PM |  Converting File ...  
+12/06/14 11:38:44 PM |  from convert 
+12/06/14 11:38:44 PM |  Set configuration for file: 
+12/06/14 11:38:44 PM |  del file in set() method. 
+12/06/14 11:38:44 PM |  FileClass initialitation with/Users/usuario/Documents/prueba/1.dat 
+12/06/14 11:38:44 PM |  Setting basename, name, extension, dirname 
+12/06/14 11:38:44 PM |  test: (exist dirname, exist filepath)
+12/06/14 11:38:44 PM |  (True, True)
+12/06/14 11:38:44 PM |  Successful instance of file 
+12/06/14 11:38:44 PM |  Directory Save In is not a directory 
+12/06/14 11:38:44 PM |  savein: /Users/usuario/Documents/prueba/TXT 
+12/06/14 11:38:44 PM |  	Directory created: /Users/usuario/Documents/prueba/TXT
+12/06/14 11:38:44 PM |  File will be save in /Users/usuario/Documents/prueba/TXT
+12/06/14 11:38:44 PM |  Creating .txt file /Users/usuario/Documents/prueba/TXT/1.txt
+12/06/14 11:38:44 PM |  FileClass initialitation with/Users/usuario/Documents/prueba/TXT/1.txt 
+12/06/14 11:38:44 PM |  Setting basename, name, extension, dirname 
+12/06/14 11:38:44 PM |  is not a file /Users/usuario/Documents/prueba/TXT/1.txt
+12/06/14 11:38:44 PM |  test: (exist dirname, exist filepath)
+12/06/14 11:38:44 PM |  (True, False)
+12/06/14 11:38:44 PM |  creating a temporary directory 
+12/06/14 11:38:44 PM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmp5Z1cOv 
+12/06/14 11:38:44 PM |  from temp() copy  1.dat to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmp5Z1cOv
+12/06/14 11:38:44 PM |  change name for security: temp.dat 
+12/06/14 11:38:44 PM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmp5Z1cOv
+12/06/14 11:38:44 PM |  File finished 
+12/06/14 11:38:44 PM |  Process finished 
+12/06/14 11:38:44 PM |  Close aTXT :::::::::::::::::::::::::::::::::::::::::::::::::: 
+12/06/14 11:38:44 PM |  Finish work 

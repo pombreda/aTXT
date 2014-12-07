@@ -1,0 +1,115 @@
+11/26/14 02:48:15 AM |  GUI aTXT v0.1 ============================== 
+11/26/14 02:48:15 AM |  set configuration 
+11/26/14 02:48:15 AM |  set size of window 
+11/26/14 02:48:15 AM |  drawing box Directory 
+11/26/14 02:48:15 AM |  drawing box Options 
+11/26/14 02:48:40 AM |   
+11/26/14 02:48:40 AM |  from scanDir starting scanning
+11/26/14 02:48:40 AM |  directory:/Users/usuario/Desktop/a 
+11/26/14 02:48:40 AM |  level:0 
+11/26/14 02:48:40 AM |  tfiles:
+11/26/14 02:48:40 AM |  ['.pdf']
+11/26/14 02:48:40 AM |  Starting Walking over Directory 
+11/26/14 02:48:40 AM |  Options: 
+11/26/14 02:48:40 AM |  created QThread for WalkSize 
+11/26/14 02:48:40 AM |  savein:TXT 
+11/26/14 02:48:40 AM |  heroes: [u'xpdf', u'xml'] 
+11/26/14 02:48:40 AM |  debug: <bound method Window.debug of <__main__.Window object at 0x10e397fc8>> 
+11/26/14 02:48:40 AM |  clean: False 
+11/26/14 02:48:40 AM |  uppercase: False 
+11/26/14 02:48:40 AM |  overwrite: True 
+11/26/14 02:48:40 AM |  Trasversing directory 
+11/26/14 02:48:40 AM |  Directory is valid 
+11/26/14 02:48:40 AM |  wk.walk starting 
+11/26/14 02:48:40 AM |  File #1 
+11/26/14 02:48:40 AM |  path: /Users/usuario/Desktop/a/Rose-Ackerman.pdf 
+11/26/14 02:48:40 AM |  wk.walk Finish 
+11/26/14 02:48:40 AM |  Ready 
+11/26/14 02:48:40 AM |  Total Files: 1 
+11/26/14 02:48:40 AM |  Total Size: 3.0 MB 
+11/26/14 02:48:40 AM |  Type Files: ['.pdf'] 
+11/26/14 02:48:43 AM |  created QThread for ProcessLib 
+11/26/14 02:48:43 AM |  aTXT Version: 0.2 
+11/26/14 02:48:43 AM |  Set Configuration 
+11/26/14 02:48:43 AM |  importing win32 
+11/26/14 02:48:43 AM |  It's not available win32com 
+11/26/14 02:48:43 AM |  set thirdy paths for darwin mac 
+11/26/14 02:48:43 AM |  set path for tesseract OCR 
+11/26/14 02:48:43 AM |  trying to find tesseract binary by which command 
+11/26/14 02:48:43 AM |  * fail with which commnand
+11/26/14 02:48:43 AM |  set tesseract:  /usr/local/bin/tesseract
+11/26/14 02:48:43 AM |  Ready to start any conversion 
+11/26/14 02:48:43 AM |   
+11/26/14 02:48:43 AM |  Directory: /Users/usuario/Desktop/a 
+11/26/14 02:48:43 AM |  Starting process over files in Directory: 
+11/26/14 02:48:43 AM |  File #1 
+11/26/14 02:48:43 AM |  Filepath: /Users/usuario/Desktop/a/Rose-Ackerman.pdf 
+11/26/14 02:48:43 AM |  Converting File ...  
+11/26/14 02:48:43 AM |  It'll take few seconds or minutes (OCR Reconigtion)   
+11/26/14 02:48:43 AM |  Please Wait 
+11/26/14 02:48:43 AM |  from convert 
+11/26/14 02:48:43 AM |  Set configuration for file: 
+11/26/14 02:48:43 AM |  del file in set() method. It's not. 
+11/26/14 02:48:43 AM |  FileClass initialitation with/Users/usuario/Desktop/a/Rose-Ackerman.pdf 
+11/26/14 02:48:43 AM |  Setting basename, name, extension, dirname 
+11/26/14 02:48:43 AM |  test: (exist dirname, exist filepath)
+11/26/14 02:48:43 AM |  (True, True)
+11/26/14 02:48:43 AM |  Successful instance of file 
+11/26/14 02:48:43 AM |  Directory Save In is not a directory 
+11/26/14 02:48:43 AM |  savein: /Users/usuario/Desktop/a/TXT 
+11/26/14 02:48:43 AM |  File will be save in /Users/usuario/Desktop/a/TXT
+11/26/14 02:48:43 AM |  Creating .txt file /Users/usuario/Desktop/a/TXT/Rose-Ackerman.txt
+11/26/14 02:48:43 AM |  FileClass initialitation with/Users/usuario/Desktop/a/TXT/Rose-Ackerman.txt 
+11/26/14 02:48:43 AM |  Setting basename, name, extension, dirname 
+11/26/14 02:48:43 AM |  test: (exist dirname, exist filepath)
+11/26/14 02:48:43 AM |  (True, True)
+11/26/14 02:48:43 AM |  creating a temporary directory 
+11/26/14 02:48:43 AM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpX_e419 
+11/26/14 02:48:43 AM |  from temp() copy  Rose-Ackerman.pdf to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpX_e419
+11/26/14 02:48:43 AM |  change name for security: temp.pdf 
+11/26/14 02:48:43 AM |   
+11/26/14 02:48:43 AM |  [new conversion] 
+11/26/14 02:48:43 AM |  starting pdf_ocr to txt 
+11/26/14 02:48:43 AM |  OCR? 
+11/26/14 02:48:43 AM |  using pdffonts 
+11/26/14 02:48:43 AM |  
+name                                 type              emb sub uni object ID
+------------------------------------ ----------------- --- --- --- ---------
+ 
+11/26/14 02:48:43 AM |  from_pdf_ocr set options pdftopng: ./bin/mac/bin64/pdftopng /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpX_e419/temp.pdf /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpX_e419/image
+11/26/14 02:48:43 AM |  from_pdf_ocr calling pdftopng
+11/26/14 02:48:58 AM |  from_pdf_ocr processing page 1
+11/26/14 02:48:59 AM |  from_pdf_ocr processing page 2
+11/26/14 02:49:11 AM |  from_pdf_ocr processing page 3
+11/26/14 02:49:19 AM |  from_pdf_ocr processing page 4
+11/26/14 02:49:40 AM |  from_pdf_ocr processing page 5
+11/26/14 02:50:01 AM |  from_pdf_ocr processing page 6
+11/26/14 02:50:23 AM |  from_pdf_ocr processing page 7
+11/26/14 02:50:44 AM |  from_pdf_ocr processing page 8
+11/26/14 02:51:05 AM |  from_pdf_ocr processing page 9
+11/26/14 02:51:24 AM |  from_pdf_ocr processing page 10
+11/26/14 02:51:46 AM |  from_pdf_ocr processing page 11
+11/26/14 02:51:52 AM |  from_pdf_ocr processing page 12
+11/26/14 02:51:53 AM |  from_pdf_ocr processing page 13
+11/26/14 02:51:58 AM |  from_pdf_ocr processing page 14
+11/26/14 02:52:20 AM |  from_pdf_ocr processing page 15
+11/26/14 02:52:36 AM |  from_pdf_ocr processing page 16
+11/26/14 02:53:00 AM |  from_pdf_ocr processing page 17
+11/26/14 02:53:26 AM |  from_pdf_ocr processing page 18
+11/26/14 02:53:45 AM |  from_pdf_ocr processing page 19
+11/26/14 02:54:03 AM |  from_pdf_ocr processing page 20
+11/26/14 02:54:24 AM |  from_pdf_ocr processing page 21
+11/26/14 02:54:40 AM |  from_pdf_ocr processing page 22
+11/26/14 02:54:57 AM |  from_pdf_ocr processing page 23
+11/26/14 02:55:19 AM |  from_pdf_ocr processing page 24
+11/26/14 02:55:43 AM |  from_pdf_ocr processing page 25
+11/26/14 02:56:08 AM |  from_pdf_ocr processing page 26
+11/26/14 02:56:26 AM |  from_pdf_ocr processing page 27
+11/26/14 02:56:44 AM |  from_pdf_ocr processing page 28
+11/26/14 02:57:03 AM |  from_pdf_ocr processing page 29
+11/26/14 02:57:10 AM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpX_e419
+11/26/14 02:57:10 AM |  File finished 
+11/26/14 02:57:10 AM |  Process finished 
+11/26/14 02:57:10 AM |  Close aTXT :::::::::::::::::::::::::::::::::::::::::::::::::: 
+11/26/14 02:57:10 AM |  Finish work 
+11/26/14 07:16:00 AM |  Exit 

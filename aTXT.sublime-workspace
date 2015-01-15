@@ -519,35 +519,19 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "aTXT.py",
-			"settings":
-			{
-				"buffer_size": 23721,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "usagedoc.py",
-			"settings":
-			{
-				"buffer_size": 233,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/User/mypython.sublime-build",
 	"command_palette":
 	{
-		"height": 351.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
-				"pe",
+				"pep",
 				"User: Python PEP8 Autoformat"
 			],
 			[
-				"pep",
+				"pe",
 				"User: Python PEP8 Autoformat"
 			],
 			[
@@ -744,6 +728,11 @@
 	],
 	"file_history":
 	[
+		"/Users/usuario/Documents/aTXT/aTXT.py",
+		"/Users/usuario/Documents/aTXT/setup.py",
+		"/Users/usuario/Documents/aTXT/usagedoc.py",
+		"/Users/usuario/Documents/aTXT/GUI.py",
+		"/Users/usuario/Documents/aTXT/version.py",
 		"/Users/usuario/Documents/aTXT/usage.py",
 		"/Users/usuario/Documents/aTXT/aTXT-2015_01_14_22-40.txt",
 		"/Users/usuario/Documents/peuler/55 - Lychrel numbers.py",
@@ -801,7 +790,6 @@
 		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/CAP1/1.py",
 		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/FuentesLibroOriginal/salida.txt",
 		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/codigo.py",
-		"/Users/usuario/Documents/aTXT/GUI.py",
 		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/github.css",
 		"/Users/usuario/Desktop/articulo.txt",
 		"/Users/usuario/Desktop/prologo",
@@ -855,7 +843,6 @@
 		"/Users/usuario/Desktop/tablero.java",
 		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/5-hippie/hippie.java",
 		"/Users/usuario/Desktop/6782-Triangles.cpp",
-		"/Users/usuario/Documents/aTXT/aTXT.py",
 		"/Users/usuario/Desktop/6782-Triangles.c++",
 		"/Users/usuario/Documents/14 27.txt",
 		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/4-Finanzas/solver.py",
@@ -868,14 +855,11 @@
 		"/Users/usuario/Desktop/n.cpp",
 		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/usuario/Dropbox/MisClases/ALG/codigos/dp/maxsubarray.py",
-		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/unimodal.py",
-		"/Users/usuario/Desktop/1610.cpp",
-		"/Users/usuario/Desktop/1610.py",
-		"/Users/usuario/Desktop/sum.py"
+		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/unimodal.py"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 59.0
 	},
 	"find_in_files":
 	{
@@ -890,6 +874,24 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"TXT",
+			"filepath",
+			"]",
+			"[",
+			"or",
+			"print",
+			"ext",
+			"split",
+			"(path)",
+			"path",
+			"\"",
+			"os.",
+			"PDF",
+			"-v|",
+			"-v",
+			"from",
+			"\"",
+			".",
 			"arguments_example",
 			"naval_fate",
 			"termina",
@@ -999,25 +1001,7 @@
 			"é",
 			"ú",
 			"Ó",
-			"í",
-			"ñ",
-			"á",
-			"ó",
-			"́a",
-			"maximo",
-			"cent",
-			"maximo",
-			"index",
-			"maxmin",
-			"DOCX ",
-			"inf ",
-			"pB",
-			"pA",
-			"bin",
-			"e",
-			"dp",
-			"j,",
-			"i,"
+			"í"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1048,165 +1032,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "aTXT.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23721,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1537,
-								1537
-							]
-						],
-						"settings":
-						{
-							"WordCountShouldRun": false,
-							"WordCountSyntax": "python",
-							"c_time":
-							[
-								128,
-								3,
-								99,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								113,
-								0,
-								67,
-								10,
-								7,
-								222,
-								10,
-								8,
-								15,
-								32,
-								48,
-								0,
-								0,
-								0,
-								113,
-								1,
-								133,
-								113,
-								2,
-								82,
-								113,
-								3,
-								46
-							],
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1566.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "usagedoc.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 233,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								227,
-								227
-							]
-						],
-						"settings":
-						{
-							"WordCountShouldRun": false,
-							"WordCountSyntax": "python",
-							"c_time":
-							[
-								128,
-								3,
-								99,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								100,
-								97,
-								116,
-								101,
-								116,
-								105,
-								109,
-								101,
-								10,
-								113,
-								0,
-								67,
-								10,
-								7,
-								223,
-								1,
-								14,
-								22,
-								46,
-								10,
-								0,
-								0,
-								0,
-								113,
-								1,
-								133,
-								113,
-								2,
-								82,
-								113,
-								3,
-								46
-							],
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

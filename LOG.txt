@@ -3,7 +3,8 @@
 01/15/15 03:18:22 AM |  importing win32 
 01/15/15 03:18:22 AM |  It's not available win32com 
 01/15/15 03:18:22 AM |  set thirdy paths for darwin mac 
-01/15/15 03:18:22 AM |  set path for tesseract OCR 
+01/15/15 03:18:22 AM01/15/15 03:25:49 AM |  Exit 
+ 
 01/15/15 03:18:22 AM |  trying to find tesseract binary by which command 
 01/15/15 03:18:22 AM |  set tesseract:  /usr/local/bin/tesseract
 01/15/15 03:18:22 AM |  Ready to start any conversion 

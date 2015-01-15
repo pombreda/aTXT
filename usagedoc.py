@@ -3,10 +3,10 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-14 22:46:10
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 03:06:16
+# @Last Modified time: 2015-01-15 03:43:29
 
 """
-[aTXT.py]
+[aTXT.py] v1.0.0
 Convert files to plain text with extension (*.txt)
 
 Usage:

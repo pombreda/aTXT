@@ -268,7 +268,7 @@ class Window(QtGui.QWidget):
     totalsize = 0
 
     def __init__(self):
-        debug('GUI aTXT v' + __version__ + " " + "=" * 30)
+        debug('GUI aTXT ' + __version__ + " " + "=" * 30)
         super(Window, self).__init__()
         debug('set configuration')
         self.config()
@@ -303,7 +303,7 @@ class Window(QtGui.QWidget):
             pass
 
     def config(self):
-        self.setWindowTitle("aTXT v." + __version__)
+        self.setWindowTitle("aTXT " + __version__)
 
         debug('set size of window',)
         self.setFixedSize(650, 500)

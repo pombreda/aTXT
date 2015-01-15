@@ -842,6 +842,9 @@ def main():
                         if verbose:
                             print e
                         return
+    elif args['-i']:
+        import GUI
+        GUI.main()
     else:
         print usagedoc.__doc__
         return

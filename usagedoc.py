@@ -3,14 +3,14 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-14 22:46:10
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 03:43:29
+# @Last Modified time: 2015-01-15 10:30:03
 
 """
-[aTXT.py] v1.0.0
+[aTXT.py]
 Convert files to plain text with extension (*.txt)
 
 Usage:
-    aTXT.py
+    aTXT.py -i
     aTXT.py <file> [-V|--verbose] [-uo] [--to <to>]
     aTXT.py [--from <from>] [--to <to>] <file>... [-uo] [-V|--verbose]
     aTXT.py --path <path> --depth <depth> [--to <to>] [-V|--verbose] 
@@ -19,14 +19,15 @@ Usage:
 
 Arguments:
     <file>            If <from> is none, file should be in current directory
-    --path  <path>    Process the folder with path <path> and all files inside
+    --path <path>     Process the folder with path <path> and all files inside
 
 Options:
-    --from <from>     Process files from path <from> if <file> appears
-    --to <to>         Save all (*.txt) files to path <to> if <file> appears
+    -i                Launch a Graphical Interface
+    --from <from>     Process files from path <from> [default: ./]
+    --to <to>         Save all (*.txt) files to path <to> if <file> appears [default: ./]
     --depth <depth>   Depth for trasvering path using depth-first-search 
-                      for --path option
-    -a, --all         Convert all allowed formats (pdf, docx, doc, dat)
+                      for --path option [default: 1]
+    -a, --all         Convert all allowed formats (pdf, docx, doc, dat) 
     -p, --pdf         Convert files with extension (*.pdf|*.PDF)
     -x, --docx        Convert files with extension (*.docx|*.DOCX)
     -d, --doc         Convert files with extension (*.doc|*.DOC)

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pdf",
+				"pdfminer"
+			],
+			[
+				"doc",
+				"docx"
+			],
+			[
 				"__",
 				"__version__	statement"
 			],
@@ -506,19 +514,19 @@
 			[
 				"up",
 				"uppercase	statement"
-			],
-			[
-				"stat",
-				"starting"
-			],
-			[
-				"direc",
-				"directory"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "setup.py",
+			"settings":
+			{
+				"buffer_size": 1478,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/User/mypython.sublime-build",
 	"command_palette":
@@ -724,15 +732,32 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/usuario/Documents/aTXT"
+		"/Users/usuario/Documents/aTXT",
+		"/Users/usuario/Documents/aTXT/aTXT.egg-info",
+		"/Users/usuario/Documents/aTXT/dist"
 	],
 	"file_history":
 	[
-		"/Users/usuario/Documents/aTXT/aTXT.py",
+		"/Users/usuario/.pypirc",
+		"/Users/usuario/Documents/aTXT/aTXT/__init__.py",
+		"/Users/usuario/Documents/aTXT/aTXT-2015_01_15_16-22.txt",
+		"/Users/usuario/Documents/aTXT/setup.cfg",
+		"/Users/usuario/Documents/aTXT/entry_points.txt",
+		"/Users/usuario/Documents/aTXT/aTXT/aTXT-2015_01_15_16-19.txt",
+		"/Users/usuario/Documents/aTXT/README.md",
+		"/Users/usuario/Documents/aTXT/README.rst",
+		"/Users/usuario/Documents/aTXT/LICENSE.txt",
+		"/Users/usuario/Documents/aTXT/MANIFEST.in",
+		"/Users/usuario/Documents/aTXT/CHANGES.txt",
+		"/Users/usuario/Documents/aTXT/dist/aTXT.py-v1.0.0.tar.gz",
 		"/Users/usuario/Documents/aTXT/setup.py",
-		"/Users/usuario/Documents/aTXT/usagedoc.py",
-		"/Users/usuario/Documents/aTXT/GUI.py",
+		"/Users/usuario/Documents/aTXT/aTXT.py.egg-info/SOURCES.txt",
+		"/Users/usuario/Documents/aTXT/aTXT.py.egg-info/PKG-INFO",
+		"/Users/usuario/Documents/aTXT/__init__.py",
 		"/Users/usuario/Documents/aTXT/version.py",
+		"/Users/usuario/Documents/aTXT/GUI.py",
+		"/Users/usuario/Documents/aTXT/aTXT.py",
+		"/Users/usuario/Documents/aTXT/usagedoc.py",
 		"/Users/usuario/Documents/aTXT/usage.py",
 		"/Users/usuario/Documents/aTXT/aTXT-2015_01_14_22-40.txt",
 		"/Users/usuario/Documents/peuler/55 - Lychrel numbers.py",
@@ -840,22 +865,7 @@
 		"/Users/usuario/Dropbox/MisClases/ALG/codigos/dan.py",
 		"/Users/usuario/Dropbox/MisClases/ALG/codigos/2/dp.py",
 		"/Users/usuario/Desktop/dos.cpp",
-		"/Users/usuario/Desktop/tablero.java",
-		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/5-hippie/hippie.java",
-		"/Users/usuario/Desktop/6782-Triangles.cpp",
-		"/Users/usuario/Desktop/6782-Triangles.c++",
-		"/Users/usuario/Documents/14 27.txt",
-		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/4-Finanzas/solver.py",
-		"/Users/usuario/Desktop/dulces.py",
-		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/AutoPep8/AutoPep8.sublime-settings",
-		"/Users/usuario/Desktop/1371.c++",
-		"/Users/usuario/Desktop/1408.py",
-		"/Users/usuario/Desktop/1493.cpp",
-		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/ALG1P2.py",
-		"/Users/usuario/Desktop/n.cpp",
-		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Users/usuario/Dropbox/MisClases/ALG/codigos/dp/maxsubarray.py",
-		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/unimodal.py"
+		"/Users/usuario/Desktop/tablero.java"
 	],
 	"find":
 	{
@@ -874,6 +884,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"{{your_password}}",
+			" {{your_username}}",
+			"{{your_username}}",
+			"version",
 			"TXT",
 			"filepath",
 			"]",
@@ -997,11 +1011,7 @@
 			".............................................................................",
 			"............................................................................",
 			"...........................................................................",
-			"́",
-			"é",
-			"ú",
-			"Ó",
-			"í"
+			"́"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1032,8 +1042,88 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "setup.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1061,
+								1061
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": false,
+							"WordCountSyntax": "python",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								223,
+								1,
+								15,
+								13,
+								55,
+								51,
+								0,
+								0,
+								0,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 846.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1099,6 +1189,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"set",
+				"setup.cfg"
+			],
 			[
 				"pru",
 				"prueba.py"

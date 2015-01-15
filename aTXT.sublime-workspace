@@ -1,0 +1,1371 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"__",
+				"__version__	statement"
+			],
+			[
+				"log",
+				"log10	function"
+			],
+			[
+				"rev",
+				"reversed	class"
+			],
+			[
+				"l",
+				"letters	statement"
+			],
+			[
+				"a",
+				"ascii_uppercase	statement"
+			],
+			[
+				"set",
+				"setrecursionlimit	function"
+			],
+			[
+				"ran",
+				"randrange	statement"
+			],
+			[
+				"wa",
+				"wrap	function"
+			],
+			[
+				"tim",
+				"timing	function"
+			],
+			[
+				"es_",
+				"es_primo	function"
+			],
+			[
+				"has",
+				"hash_ps	statement"
+			],
+			[
+				"cr",
+				"criba	function"
+			],
+			[
+				"es",
+				"es_primo_	function"
+			],
+			[
+				"mi",
+				"miller_rabin	function"
+			],
+			[
+				"libre",
+				"libre_cuadrados	function"
+			],
+			[
+				"c",
+				"check	function"
+			],
+			[
+				"prm",
+				"primos	function"
+			],
+			[
+				"TR",
+				"TARGET	statement"
+			],
+			[
+				"di",
+				"divisores	function"
+			],
+			[
+				"fac",
+				"factores	function"
+			],
+			[
+				"max",
+				"maxV	statement"
+			],
+			[
+				"jona",
+				"jonalib	module"
+			],
+			[
+				"s",
+				"strip	function"
+			],
+			[
+				"Co",
+				"Counter	class"
+			],
+			[
+				"criba",
+				"criba_	function"
+			],
+			[
+				"entre",
+				"entreF"
+			],
+			[
+				"pla",
+				"playerB	statement"
+			],
+			[
+				"def",
+				"defaultdict	class"
+			],
+			[
+				"bis",
+				"bisect_left	function"
+			],
+			[
+				"su",
+				"sup2	statement"
+			],
+			[
+				"Max",
+				"maxV	statement"
+			],
+			[
+				"kn",
+				"knuth_miles"
+			],
+			[
+				"for",
+				"forward"
+			],
+			[
+				"K",
+				"keys"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"bina",
+				"binarios_sirven"
+			],
+			[
+				"ES",
+				"ESPECÍFICO"
+			],
+			[
+				"min",
+				"minDif	statement"
+			],
+			[
+				"sum",
+				"sumaPosible	forflow"
+			],
+			[
+				"AR",
+				"ARISTA_USUARIO"
+			],
+			[
+				"pos",
+				"posibles"
+			],
+			[
+				"po",
+				"posibles"
+			],
+			[
+				"pu",
+				"push_back"
+			],
+			[
+				"jug",
+				"jugadas_posibles"
+			],
+			[
+				"pun",
+				"puntos_pc"
+			],
+			[
+				"mov",
+				"mov_disponibles"
+			],
+			[
+				"hu",
+				"HUECO"
+			],
+			[
+				"punt",
+				"puntos_usuario"
+			],
+			[
+				"co",
+				"cout"
+			],
+			[
+				"us",
+				"usuario"
+			],
+			[
+				"ad",
+				"adj_sig"
+			],
+			[
+				"A",
+				"ARISTA_PC"
+			],
+			[
+				"P",
+				"PC"
+			],
+			[
+				"ari",
+				"arista"
+			],
+			[
+				"ar",
+				"ARISTA_VACIA"
+			],
+			[
+				"turn",
+				"turno_pc"
+			],
+			[
+				"retur",
+				"return"
+			],
+			[
+				"retu",
+				"return"
+			],
+			[
+				"U",
+				"USUARIO"
+			],
+			[
+				"mo",
+				"mov_hechos"
+			],
+			[
+				"OC",
+				"OCUPADO_U"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"jue",
+				"juega_usuario"
+			],
+			[
+				"ver",
+				"vertical"
+			],
+			[
+				"int",
+				"interseccion"
+			],
+			[
+				"to",
+				"total_puntos"
+			],
+			[
+				"form",
+				"forma_cuadrado1"
+			],
+			[
+				"ij",
+				"ij_posicion"
+			],
+			[
+				"m",
+				"make_pair"
+			],
+			[
+				"MAX",
+				"MAXN"
+			],
+			[
+				"fo",
+				"forma_cuadrado"
+			],
+			[
+				"forma_cu",
+				"forma_cuadrado1"
+			],
+			[
+				"ma",
+				"matrix"
+			],
+			[
+				"In",
+				"INT_MIN"
+			],
+			[
+				"maxf",
+				"maxfila"
+			],
+			[
+				"Matri",
+				"Matrix2	statement"
+			],
+			[
+				"maxsuma",
+				"maxsuma_subarreglo"
+			],
+			[
+				"dfs",
+				"dfs_num"
+			],
+			[
+				"G",
+				"GRIS"
+			],
+			[
+				"N",
+				"NEGRO"
+			],
+			[
+				"g",
+				"getBestK"
+			],
+			[
+				"get",
+				"getClusterNumber"
+			],
+			[
+				"Knn",
+				"knnClasifica"
+			],
+			[
+				"ve",
+				"vecinosActuales"
+			],
+			[
+				"Cla",
+				"ClassifyAdaBoost"
+			],
+			[
+				"num",
+				"numIter"
+			],
+			[
+				"i",
+				"idxPar"
+			],
+			[
+				"id",
+				"idxImpar"
+			],
+			[
+				"idx",
+				"idxPar"
+			],
+			[
+				"con",
+				"connect"
+			],
+			[
+				"cli",
+				"clicked	class"
+			],
+			[
+				"QB",
+				"QPushButton	class"
+			],
+			[
+				"ne",
+				"necessary_ocr	statement"
+			],
+			[
+				"from",
+				"from_pdf	function"
+			],
+			[
+				"from_",
+				"from_docx	function"
+			],
+			[
+				"crea",
+				"create_temp	function"
+			],
+			[
+				"dir",
+				"dirname	statement"
+			],
+			[
+				"re",
+				"return	keyword"
+			],
+			[
+				"de",
+				"debug	function"
+			],
+			[
+				"pa",
+				"path	statement"
+			],
+			[
+				"u",
+				"usuario"
+			],
+			[
+				"python",
+				"python-docx"
+			],
+			[
+				"upe",
+				"uppercase"
+			],
+			[
+				"arg",
+				"args"
+			],
+			[
+				"is",
+				"instance"
+			],
+			[
+				"temp",
+				"tempdir	param"
+			],
+			[
+				"tem",
+				"tempdir"
+			],
+			[
+				"file",
+				"filepath	param"
+			],
+			[
+				"use",
+				"use_temp	param"
+			],
+			[
+				"fp",
+				"fpath	statement"
+			],
+			[
+				"win",
+				"win32com"
+			],
+			[
+				"ko",
+				"koch2"
+			],
+			[
+				"c_",
+				"c_sum	statement"
+			],
+			[
+				"r_",
+				"r_sum	statement"
+			],
+			[
+				"l_",
+				"l_sum	statement"
+			],
+			[
+				"txt",
+				"txt_size	function"
+			],
+			[
+				"temp_",
+				"temp_path	statement"
+			],
+			[
+				"tx",
+				"txt_size	function"
+			],
+			[
+				"rm",
+				"rmtree"
+			],
+			[
+				"files",
+				"files_1kb"
+			],
+			[
+				"Ex",
+				"Exception	class"
+			],
+			[
+				"ge",
+				"getsize	function"
+			],
+			[
+				"dire",
+				"directory	statement"
+			],
+			[
+				"mk",
+				"makedirs	function"
+			],
+			[
+				"size",
+				"size_str	function"
+			],
+			[
+				"up",
+				"uppercase	statement"
+			],
+			[
+				"stat",
+				"starting"
+			],
+			[
+				"direc",
+				"directory"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "aTXT.py",
+			"settings":
+			{
+				"buffer_size": 23721,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "usagedoc.py",
+			"settings":
+			{
+				"buffer_size": 233,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/mypython.sublime-build",
+	"command_palette":
+	{
+		"height": 351.0,
+		"selected_items":
+		[
+			[
+				"pe",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"pep",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"pepe",
+				"Package Control: Enable Package"
+			],
+			[
+				"Fornt",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"ppe",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"exter",
+				"Extern REPL: last command from sublime"
+			],
+			[
+				"ext",
+				"Extern REPL: send line"
+			],
+			[
+				"ex",
+				"Extern REPL: send line"
+			],
+			[
+				"inline",
+				"Refactor: Inline"
+			],
+			[
+				"inlin",
+				"Inline Python: Replace with str()"
+			],
+			[
+				"inl",
+				"Inline Python: Execute selected code"
+			],
+			[
+				"inli",
+				"Inline Python: Execute selected code"
+			],
+			[
+				"python",
+				"SublimeREPL: Python"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pyr",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"PACK",
+				"Package Control: Add Repository"
+			],
+			[
+				"time",
+				"Toggl Timer: Time Entries"
+			],
+			[
+				"timer",
+				"Toggl Timer: Manage Workspaces' Projects"
+			],
+			[
+				"form",
+				"PEP8: Format Code"
+			],
+			[
+				"foma",
+				"PEP8: Format Code"
+			],
+			[
+				"fom",
+				"PEP8: Format Code"
+			],
+			[
+				"forma",
+				"PEP8: Format Code"
+			],
+			[
+				"Forma",
+				"PEP8: Format Code"
+			],
+			[
+				"for",
+				"PEP8: Format Code"
+			],
+			[
+				"c+",
+				"Set Syntax: C++11"
+			],
+			[
+				"in",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"fo",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"gist",
+				"Git: Snapshot"
+			],
+			[
+				"auto",
+				"Preferences: AutoPep8 Settings – Default"
+			],
+			[
+				"p",
+				"PEP8: Format Code"
+			],
+			[
+				"",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"set pyth",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"set py	",
+				"Set Syntax: Python"
+			],
+			[
+				"set p",
+				"Set Syntax: Python"
+			],
+			[
+				"dif",
+				"Set Syntax: Diff"
+			],
+			[
+				"di",
+				"Set Syntax: Diff"
+			],
+			[
+				"hex",
+				"Hex Viewer: Generate Hash"
+			]
+		],
+		"width": 425.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/usuario/Documents/aTXT"
+	],
+	"file_history":
+	[
+		"/Users/usuario/Documents/aTXT/usage.py",
+		"/Users/usuario/Documents/aTXT/aTXT-2015_01_14_22-40.txt",
+		"/Users/usuario/Documents/peuler/55 - Lychrel numbers.py",
+		"/Users/usuario/Desktop/allpaths-in-grid.py",
+		"/Users/usuario/Documents/peuler/peuler.sublime-project",
+		"/Users/usuario/Documents/peuler/19 - Counting Sundays.py",
+		"/Users/usuario/Documents/peuler/95 - Large non-Mersenne prime.py",
+		"/Users/usuario/Documents/peuler/22 - Names scores.py",
+		"/Users/usuario/Documents/peuler/prueba.py",
+		"/Users/usuario/Documents/peuler/primos357.txt",
+		"/Users/usuario/Documents/peuler/56 - Powerful digit sum.cpp",
+		"/Users/usuario/Documents/peuler/63 - Powerful digit counts.hs",
+		"/Users/usuario/Documents/peuler/67 - Maximum path sum II.cpp",
+		"/Users/usuario/Documents/peuler/81 - Path sum two ways.cpp",
+		"/Users/usuario/Documents/peuler/82 - Path sum three ways.cpp",
+		"/Users/usuario/Documents/peuler/83 - Path sum four ways.cpp",
+		"/Users/usuario/Documents/peuler/jonalib.py",
+		"/Users/usuario/Documents/peuler/jonafuncional.py",
+		"/Users/usuario/Documents/peuler/53 - Combinatoric selections.cpp",
+		"/Users/usuario/Documents/peuler/52 - Permuted multiples.cpp",
+		"/Users/usuario/Documents/peuler/166 - Criss Cross.py",
+		"/Users/usuario/Documents/peuler/303 - Multiples with small digits.py",
+		"/Users/usuario/Documents/peuler/78 - Coin Partitions.py",
+		"/Users/usuario/Documents/peuler/116 - Red, green or blue tiles.py",
+		"/Users/usuario/Documents/peuler/117 - Red, green, and blues tiles.py",
+		"/Users/usuario/Desktop/A.py",
+		"/Users/usuario/Desktop/B.py",
+		"/Users/usuario/Desktop/input.txt",
+		"/Users/usuario/Documents/peuler/input.txt",
+		"/Users/usuario/Documents/peuler/115 - Counting block combinations II.py",
+		"/Users/usuario/Documents/peuler/114 - Counting block combinations I.py",
+		"/Users/usuario/Documents/peuler/77 -  Prime summations.py",
+		"/Users/usuario/Documents/peuler/76 - Counting summations.py",
+		"/Users/usuario/Documents/peuler/250 - 250250.py",
+		"/Users/usuario/Documents/peuler/357 - Prime generating integers.py",
+		"/Users/usuario/Documents/peuler/249 - Prime Subset Sums.py",
+		"/Users/usuario/Desktop/299-917735-74_695.txt",
+		"/Users/usuario/Desktop/transacciones.txt",
+		"/Users/usuario/Documents/peuler/primos.txt",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/funcionesRecursivas.py",
+		"/Users/usuario/Documents/peuler/primos349.txt",
+		"/Users/usuario/Dropbox/MisClases/Notas-ALG/floyd_modified.py",
+		"/Users/usuario/Documents/peuler/345 - Matrix Sum.py",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/primos.py",
+		"/Users/usuario/Documents/peuler/3 - Largest Prime Factor.py",
+		"/Users/usuario/Documents/peuler/4 - Largest palindrome product.py",
+		"/Users/usuario/Documents/peuler/450 - Writing n as the product of k distinct positive integers.py",
+		"/Users/usuario/Desktop/Lista de Mercado/index.html",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/maxsubarray.py",
+		"/Users/usuario/Documents/peuler/2 - Even Fibonacci Numbers.py",
+		"/Users/usuario/Documents/peuler/1 - Multiples of 3 and 5.py",
+		"/Users/usuario/Desktop/tablero.cpp",
+		"/Users/usuario/Desktop/Cuadrito.java",
+		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/CAP1/buscar.py",
+		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/CAP1/1.py",
+		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/FuentesLibroOriginal/salida.txt",
+		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/codigo.py",
+		"/Users/usuario/Documents/aTXT/GUI.py",
+		"/Users/usuario/Dropbox/LibroTecnicasAlgoritmos/BorradoresNuevoLibro/github.css",
+		"/Users/usuario/Desktop/articulo.txt",
+		"/Users/usuario/Desktop/prologo",
+		"/Users/usuario/Desktop/C.py",
+		"/Users/usuario/Desktop/XORSUB.py",
+		"/Users/usuario/Desktop/graph_input_answer.txt",
+		"/Users/usuario/Desktop/graph_input.txt",
+		"/Users/usuario/Desktop/floyd_warshall.py",
+		"/Users/usuario/Desktop/genA.py",
+		"/Users/usuario/Desktop/Dummit D.S., Foote R.M. Abstract algebra (3ed., Wiley, 2004)(T)(945s) copy.djvu",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/Gist.sublime-settings",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/fractal.py",
+		"/Users/usuario/Desktop/answer.py",
+		"/Users/usuario/Dropbox/MisClases/Notas-ALG/arbol2.py",
+		"/Users/usuario/Desktop/tuits.json",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/morfismo_fibonacci.py",
+		"/Users/usuario/Desktop/ejemplo.py",
+		"/Users/usuario/Desktop/knuth_miles.txt",
+		"/Users/usuario/Documents/aTXT/aTXT-2014_11_26_02-47.txt",
+		"/Users/usuario/Documents/aTXT/pdfminer/pdfcolor.py",
+		"/Users/usuario/Documents/aTXT/png2txt.py",
+		"/Users/usuario/Documents/aTXT/LOG.txt",
+		"/Users/usuario/Documents/aTXT/docx/docx.py",
+		"/Users/usuario/Documents/aTXT/docx/README.rst",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
+		"/Users/usuario/Downloads/program/tune.py",
+		"/Users/usuario/Desktop/binarios.py",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/Gist/Gist.sublime-settings",
+		"/Users/usuario/Desktop/SEMILLERO_FINAL.txt",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/WakaTime.sublime-settings",
+		"/Users/usuario/Desktop/.localized",
+		"/Users/usuario/Desktop/.ropeproject/config.py",
+		"/Applications/Sublime Text.app/Contents/Resources/Gravity White.icns",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/FileHeader/FileHeader.sublime-settings",
+		"/Users/usuario/Desktop/279A.py",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/FileHeader.sublime-settings",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/User/Toggl Timer.sublime-settings",
+		"/Users/usuario/Desktop/ssss",
+		"/Users/usuario/Desktop/lista.py",
+		"/Users/usuario/Desktop/output.txt",
+		"/Users/usuario/Desktop/burgos.txt",
+		"/Users/usuario/Desktop/a.py",
+		"/Users/usuario/Desktop/277A.py",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/fuerza_bruta_binarios.py",
+		"/Users/usuario/Desktop/277B.py",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/dan.py",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/2/dp.py",
+		"/Users/usuario/Desktop/dos.cpp",
+		"/Users/usuario/Desktop/tablero.java",
+		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/5-hippie/hippie.java",
+		"/Users/usuario/Desktop/6782-Triangles.cpp",
+		"/Users/usuario/Documents/aTXT/aTXT.py",
+		"/Users/usuario/Desktop/6782-Triangles.c++",
+		"/Users/usuario/Documents/14 27.txt",
+		"/Users/usuario/Dropbox/semillero-disegno-analisis-algoritmos/internas/USAInterna15-Mayo2014/4-Finanzas/solver.py",
+		"/Users/usuario/Desktop/dulces.py",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/AutoPep8/AutoPep8.sublime-settings",
+		"/Users/usuario/Desktop/1371.c++",
+		"/Users/usuario/Desktop/1408.py",
+		"/Users/usuario/Desktop/1493.cpp",
+		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/ALG1P2.py",
+		"/Users/usuario/Desktop/n.cpp",
+		"/Users/usuario/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/usuario/Dropbox/MisClases/ALG/codigos/dp/maxsubarray.py",
+		"/Users/usuario/Dropbox/MisClases/ALG/2014-2-ALG1/unimodal.py",
+		"/Users/usuario/Desktop/1610.cpp",
+		"/Users/usuario/Desktop/1610.py",
+		"/Users/usuario/Desktop/sum.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"arguments_example",
+			"naval_fate",
+			"termina",
+			"check",
+			"n",
+			"paths",
+			"len(num)",
+			"nn",
+			"\\(.*\\)",
+			"dia",
+			"sundays",
+			"i",
+			" +",
+			"=2",
+			"2",
+			")",
+			"rojos",
+			"k",
+			"dp",
+			"nparticiones_",
+			"l * 10",
+			"u",
+			"k",
+			"l",
+			"+= ",
+			"[",
+			"'0'",
+			"f(",
+			"\"",
+			"0",
+			"1",
+			"0",
+			"nparticiones_",
+			"f",
+			"N+1",
+			"19845361650",
+			"TRANS",
+			"t",
+			"k % N",
+			"M",
+			"random",
+			"ps[i]",
+			"p",
+			"2",
+			"1",
+			"TARGET",
+			"divisores",
+			"append",
+			"c",
+			"criba",
+			"primo",
+			"140",
+			"120",
+			"sieve",
+			"_",
+			"epsilonPresionar",
+			"psilonPresionar ",
+			"eps",
+			"paint",
+			"paint(",
+			"cacho",
+			"paint",
+			"paint(",
+			"+",
+			"Color.wh",
+			"repaint",
+			"cantAc",
+			"todosLosDemas",
+			"cambioJugador",
+			"marqueSiPuso",
+			"T(n)",
+			"ú",
+			"í",
+			"ó",
+			"á",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"\\.+\\s\\d+",
+			"á",
+			"ú",
+			"ó",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"\\.+\\s\\d+",
+			"ó",
+			"ú",
+			"á",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"\\.+\\s\\d+",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"'a",
+			"ó",
+			"á",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"\\.+\\s\\d+",
+			"ú",
+			"á",
+			"ó",
+			"\\s\\d\\.\\d{1,2}\\s",
+			"\\.+\\s\\d+",
+			"á",
+			"ó",
+			"Ó",
+			"..............................................................................",
+			".............................................................................",
+			"............................................................................",
+			"...........................................................................",
+			"́",
+			"é",
+			"ú",
+			"Ó",
+			"í",
+			"ñ",
+			"á",
+			"ó",
+			"́a",
+			"maximo",
+			"cent",
+			"maximo",
+			"index",
+			"maxmin",
+			"DOCX ",
+			"inf ",
+			"pB",
+			"pA",
+			"bin",
+			"e",
+			"dp",
+			"j,",
+			"i,"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\\\'u",
+			"\\\\'i",
+			"\\\\'o",
+			"\\\\'a",
+			"\\\\'u",
+			"\\\\'o",
+			"\\}\\\\section\\{",
+			"\\}\\n \\\\section\\{",
+			"\\\\'o",
+			"\\\\'u",
+			"\\\\'a",
+			"\\'o",
+			"\\'a"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "aTXT.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1537,
+								1537
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": false,
+							"WordCountSyntax": "python",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								222,
+								10,
+								8,
+								15,
+								32,
+								48,
+								0,
+								0,
+								0,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1566.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "usagedoc.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 233,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								227,
+								227
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": false,
+							"WordCountSyntax": "python",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								223,
+								1,
+								14,
+								22,
+								46,
+								10,
+								0,
+								0,
+								0,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 72.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.autopep8":
+	{
+		"height": 118.0
+	},
+	"output.exec":
+	{
+		"height": 180.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-init":
+	{
+		"height": 172.0
+	},
+	"output.hex_viewer_inspector":
+	{
+		"height": 172.0
+	},
+	"project": "aTXT.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"pru",
+				"prueba.py"
+			],
+			[
+				"prueba",
+				"prueba.py"
+			],
+			[
+				"jona",
+				"jonalib.py"
+			],
+			[
+				"pep",
+				"peuler.sublime-project"
+			],
+			[
+				"pl",
+				"playGame.py"
+			],
+			[
+				"in",
+				"input.txt"
+			],
+			[
+				"o",
+				"output.txt"
+			],
+			[
+				"gra",
+				"graph_input.txt"
+			],
+			[
+				"cmea",
+				"src/cmeans.c"
+			],
+			[
+				".c",
+				"src/Rsvm.c"
+			],
+			[
+				"tes",
+				"test.py"
+			],
+			[
+				"rev",
+				"revisarDir.py"
+			],
+			[
+				"alg",
+				"MisClases/ALG/2014-1-ALG1/ALG1P1.tex"
+			],
+			[
+				"libro",
+				"sharelatex/Notas en Algoritmos/libro/libro.tex"
+			],
+			[
+				"combinatoria",
+				"sharelatex/Notas en Algoritmos/libro/combinatoria/combinatoria.tex"
+			],
+			[
+				"combin",
+				"MisClases/ALG/codigos/combinatoria.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 180.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

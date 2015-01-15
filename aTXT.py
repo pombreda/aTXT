@@ -3,7 +3,7 @@
 from __future__ import division
 
 __author__ = 'Jonathan Prieto'
-__version__ = "0.2"
+__version__ = '0.2'
 
 import os
 import tempfile as tmp
@@ -19,14 +19,17 @@ import logging as log
 import zipfile as zp
 import datetime
 
+from docopt import docopt
+import usagedoc
+
 from kitchen.text.converters import getwriter, to_unicode
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-log_filename = "aTXT" + \
-    datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
-# log_filename = "LOG.txt"
+# log_filename = "aTXT" + \
+    # datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
+log_filename = "LOG.txt"
 
 
 class Debug(object):
@@ -702,3 +705,18 @@ class aTXT(object):
             self.debug(e)
 
         return "Finish convert method call"
+
+
+def main():
+    args = docopt(usagedoc.__doc__, version='aTXT ' + __version__)
+    if args['<file>']:
+        print "entro a file"
+    elif args['<path>']:
+        print "entro a path"
+    else:
+        print usagedoc.__doc__
+    print args
+
+
+if __name__ == '__main__':
+    main()

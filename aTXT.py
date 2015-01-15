@@ -3,7 +3,9 @@
 from __future__ import division
 
 __author__ = 'Jonathan Prieto'
-__version__ = '0.2'
+
+from version import __version__ as version
+__version__ = version
 
 import os
 import tempfile as tmp
@@ -27,14 +29,15 @@ from kitchen.text.converters import getwriter, to_unicode
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-# log_filename = "aTXT" + \
-    # datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
-log_filename = "LOG.txt"
+verbose = False
+log_filename = "aTXT" + \
+datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
+# log_filename = "LOG.txt"
 
 
 class Debug(object):
 
-    def __init__(self, log_path=log_filename, debug=True):
+    def __init__(self, log_path=log_filename, debug=False):
         self.debug = debug
         log.basicConfig(filename=log_path,
                         filemode='w',
@@ -173,7 +176,7 @@ class aTXT(object):
         if not debug:
             self._debug = Debug()
 
-        self.debug("aTXT Version: " + __version__)
+        self.debug("aTXT v" + __version__)
         self.debug("Set Configuration")
 
         # basic setting
@@ -220,7 +223,7 @@ class aTXT(object):
 
         self.debug('set path for tesseract OCR')
 
-        if str(os.name) == 'nt': # windows 7 or later
+        if str(os.name) == 'nt':  # windows 7 or later
             self.tesseract_binary = '"c:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe"'
         else:
             self.tesseract_binary = "/usr/local/bin/tesseract"
@@ -247,7 +250,8 @@ class aTXT(object):
 
     def debug(self, *args):
         self._debug.write(*args)
-        print args
+        if verbose:
+            print args
 
     def make_dir(self, path):
         try:
@@ -682,7 +686,7 @@ class aTXT(object):
         except Exception, e:
             self.debug("fail to call get_temp()")
             self.debug(e)
-            return ''   
+            return ''
 
         if self.file.extension.endswith('pdf'):
             newpath = self.from_pdf_ocr(hero=heroes[0])
@@ -704,19 +708,143 @@ class aTXT(object):
             self.debug("Fail deleting temp file and directory")
             self.debug(e)
 
-        return "Finish convert method call"
+        return newpath
 
 
 def main():
-    args = docopt(usagedoc.__doc__, version='aTXT ' + __version__)
+    global verbose
+    args = docopt(usagedoc.__doc__, version='aTXT V' + __version__)
+    verbose = args['--verbose']
+    
+    manager = aTXT()
+
     if args['<file>']:
-        print "entro a file"
-    elif args['<path>']:
-        print "entro a path"
+        path = args['--from']
+        if path:
+            if not os.path.exists(path) or not os.path.isdir(path):
+                if verbose:
+                    print path, 'is not a valid path for --from option'
+                return
+        else:
+            path = os.getcwd()
+        to = args['--to']
+        if to:
+            if not os.path.exists(to) or not os.path.isdir(to):
+                if verbose:
+                    print to, 'is not a valid path for --to option'
+                return
+        else:
+            to = path
+
+        tfiles = set()
+        files = []
+        for f in args['<file>']:
+            if not os.path.isabs(f):
+                fpath = os.path.join(path, f)
+            else:
+                fpath = f
+            root, ext = os.path.splitext(fpath)
+            ext = ext.lower()
+            if (not os.path.isfile(fpath) or
+                    not os.path.exists(fpath) or
+                    not ext in ['.pdf', '.docx', '.dat', '.doc']):
+                if verbose:
+                    print fpath, 'not found or \n\tignored (may has not a format supported)'
+                continue
+            if verbose:
+                print fpath, 'indexed'
+            files.append(fpath)
+            tfiles.add(ext)
+        tfiles = list(tfiles)
+        if not files:
+            if verbose:
+                print 'No files to process.'
+            return
+
+        if verbose:
+            print 'path={p}\nto={t}\ntfiles={f}\n'.format(p=path, t=to, f=tfiles)
+            print 'Pending', len(files)
+            for f in files:
+                print '\t', f
+
+        for fpath in files:
+            manager.convert(
+                            filepath=fpath,
+                            uppercase=args['-u'],
+                            overwrite=args['-o'],
+                            savein=to
+                        )
+
+    elif args['--path']:
+        if args['<path>']:
+            path = args['<path>']
+            if not os.path.exists(path) or not os.path.isdir(path):
+                if verbose:
+                    print path, 'is not a valid path for --path option'
+                return
+            depth = args['--depth']
+            try:
+                depth = int(depth)
+                if depth < 0:
+                    raise ValueError
+            except:
+                if verbose:
+                    print depth, 'is not a valid depth for trasversing. Put a positive integer.'
+                return
+            to = args['--to']
+            if not to:
+                to = path
+            if to == 'TXT':
+                to = os.path.join(path, to)
+                manager.make_dir(to)
+            if not os.path.exists(to) or not os.path.isdir(to):
+                if verbose:
+                    print path, 'is not a valid path for --to option'
+                return
+            tfiles = []
+            if args['--pdf']:
+                tfiles.append('.pdf')
+            if args['--docx']:
+                tfiles.append('.docx')
+            if args['--doc'] and sys.platform in ['win32']:
+                tfiles.append('.doc')
+            if args['--dat']:
+                tfiles.append('.dat')
+            if not tfiles or args['--all']:
+                tfiles = ['.pdf', '.docx', '.dat']
+                if sys.platform in ['win32']:
+                    tfiles.append('.doc')
+            if verbose:
+                print 'path={p}\ndepth={d}\nto={t}\ntfiles={f}\n'.format(p=path, d=depth, t=to, f=tfiles)
+
+            conta = 0
+            for root, dirs, files in wk.walk(path, level=depth, tfiles=tfiles):
+                for f in files:
+                    conta += 1
+                    fpath = os.path.join(root, f.name)
+                    if verbose:
+                        print "File #" + str(conta)
+                        print "Filepath: " + fpath
+
+                    try:
+                        if verbose:
+                            print 'Converting File ... '
+                        if fpath.lower().endswith('.pdf') and verbose:
+                            print 'Please Wait (.pdf) usually take few minutes.'
+
+                        manager.convert(
+                            filepath = fpath,
+                            uppercase = args['-u'],
+                            overwrite = args['-o'],
+                            savein = to
+                        )
+                    except Exception, e:
+                        if verbose:
+                            print e
+                        return
     else:
         print usagedoc.__doc__
-    print args
-
+        return
 
 if __name__ == '__main__':
     main()

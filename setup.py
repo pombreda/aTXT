@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-VERSION = "0.1.4"
+from version import __version__
+
+VERSION = __version__
 
 try:
     from setuptools import setup, find_packages
@@ -20,17 +22,18 @@ setup(
         packages = find_packages(),
         version = VERSION,
         license= 'MIT',
-        description = 'An easy conversion of docx, pdf, doc(windows) to txt format file. Extraction`s tool.',
-        author = 'Jonathan Prieto',
+        description = 'A friendly Extractor of Text',
+        author = 'Jonathan S. Prieto',
         author_email = 'prieto.jona@gmail.com',
         url = 'https://github.com/d555/aTXT',   # use the URL to the github repo
         download_url = 'https://github.com/d555/aTXT/' + VERSION,
-        keywords = "extract txt doc docx pdf doc2txt docx2txt pdf2txt", # arbitrary keywords
+        keywords = "txt doc docx pdf doc2txt docx2txt pdf2txt data conversion", # arbitrary keywords
         long_description=open('README.rst').read(),
         install_requires=[
             "lxml>=3.2.3",
             "docx>=0.2.0",
-            "pdfminer"
+            "pdfminer",
+            "docopt>=0.6.2"
         ],
         zip_safe=True,
         # entry_points = {
@@ -38,19 +41,24 @@ setup(
         #     'aTXT = bin'
         # ]
         # },
-        requires=['argparse'],
+        requires=['argparse', 'docopt'],
         classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Intended Audience :: Developers',
+        'Intended Audience :: Reserchers',
         'Intended Audience :: Information Technology',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
+        'Operating System :: Windows',
+        'Operating System :: Unix Based System',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Topic :: Utilities'
+        'Topic :: Utilities',
+        'Topic :: Data Mining',
+        'Topic :: Text Processing',
         ],       
     )

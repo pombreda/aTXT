@@ -1,0 +1,98 @@
+01/15/15 03:18:22 AM |  aTXT v0.2 
+01/15/15 03:18:22 AM |  Set Configuration 
+01/15/15 03:18:22 AM |  importing win32 
+01/15/15 03:18:22 AM |  It's not available win32com 
+01/15/15 03:18:22 AM |  set thirdy paths for darwin mac 
+01/15/15 03:18:22 AM |  set path for tesseract OCR 
+01/15/15 03:18:22 AM |  trying to find tesseract binary by which command 
+01/15/15 03:18:22 AM |  set tesseract:  /usr/local/bin/tesseract
+01/15/15 03:18:22 AM |  Ready to start any conversion 
+01/15/15 03:18:22 AM |   
+01/15/15 03:18:22 AM |  from convert 
+01/15/15 03:18:22 AM |  Set configuration for file: 
+01/15/15 03:18:22 AM |  del file in set() method. 
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.docx 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, True)
+01/15/15 03:18:22 AM |  Successful instance of file 
+01/15/15 03:18:22 AM |  File will be save in /Users/usuario/Documents/prueba
+01/15/15 03:18:22 AM |  Creating .txt file /Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.txt
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.txt 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  is not a file /Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.txt
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, False)
+01/15/15 03:18:22 AM |  creating a temporary directory 
+01/15/15 03:18:22 AM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpJ0RvQD 
+01/15/15 03:18:22 AM |  from temp() copy  MODELOS ECONÓMICOS COMPUTACIONALES.docx to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpJ0RvQD
+01/15/15 03:18:22 AM |  change name for security: temp.docx 
+01/15/15 03:18:22 AM |   
+01/15/15 03:18:22 AM |  [new conversion] 
+01/15/15 03:18:22 AM |  	from_docx starting 
+01/15/15 03:18:22 AM |  	from_docx creating file /Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.txt
+01/15/15 03:18:22 AM |  	from_docx file created /Users/usuario/Documents/prueba/MODELOS ECONÓMICOS COMPUTACIONALES.txt
+01/15/15 03:18:22 AM |  	from_docx hero = xml
+01/15/15 03:18:22 AM |  	from_docx_ zipfile open document 
+01/15/15 03:18:22 AM |  	tfrom_docx_ close document 
+01/15/15 03:18:22 AM |  	from_docx_ XML(xml_content) 
+01/15/15 03:18:22 AM |  	from_docx_ tree.iterator 
+01/15/15 03:18:22 AM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpJ0RvQD
+01/15/15 03:18:22 AM |  from convert 
+01/15/15 03:18:22 AM |  Set configuration for file: 
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/resumen presentaciones claves.docx 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, True)
+01/15/15 03:18:22 AM |  Successful instance of file 
+01/15/15 03:18:22 AM |  File will be save in /Users/usuario/Documents/prueba
+01/15/15 03:18:22 AM |  Creating .txt file /Users/usuario/Documents/prueba/resumen presentaciones claves.txt
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/resumen presentaciones claves.txt 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  is not a file /Users/usuario/Documents/prueba/resumen presentaciones claves.txt
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, False)
+01/15/15 03:18:22 AM |  creating a temporary directory 
+01/15/15 03:18:22 AM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmphDcjdm 
+01/15/15 03:18:22 AM |  from temp() copy  resumen presentaciones claves.docx to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmphDcjdm
+01/15/15 03:18:22 AM |  change name for security: temp.docx 
+01/15/15 03:18:22 AM |   
+01/15/15 03:18:22 AM |  [new conversion] 
+01/15/15 03:18:22 AM |  	from_docx starting 
+01/15/15 03:18:22 AM |  	from_docx creating file /Users/usuario/Documents/prueba/resumen presentaciones claves.txt
+01/15/15 03:18:22 AM |  	from_docx file created /Users/usuario/Documents/prueba/resumen presentaciones claves.txt
+01/15/15 03:18:22 AM |  	from_docx hero = xml
+01/15/15 03:18:22 AM |  	from_docx_ zipfile open document 
+01/15/15 03:18:22 AM |  	tfrom_docx_ close document 
+01/15/15 03:18:22 AM |  	from_docx_ XML(xml_content) 
+01/15/15 03:18:22 AM |  	from_docx_ tree.iterator 
+01/15/15 03:18:22 AM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmphDcjdm
+01/15/15 03:18:22 AM |  from convert 
+01/15/15 03:18:22 AM |  Set configuration for file: 
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/taller ecopol.docx 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, True)
+01/15/15 03:18:22 AM |  Successful instance of file 
+01/15/15 03:18:22 AM |  File will be save in /Users/usuario/Documents/prueba
+01/15/15 03:18:22 AM |  Creating .txt file /Users/usuario/Documents/prueba/taller ecopol.txt
+01/15/15 03:18:22 AM |  FileClass initialitation with/Users/usuario/Documents/prueba/taller ecopol.txt 
+01/15/15 03:18:22 AM |  Setting basename, name, extension, dirname 
+01/15/15 03:18:22 AM |  is not a file /Users/usuario/Documents/prueba/taller ecopol.txt
+01/15/15 03:18:22 AM |  test: (exist dirname, exist filepath)
+01/15/15 03:18:22 AM |  (True, False)
+01/15/15 03:18:22 AM |  creating a temporary directory 
+01/15/15 03:18:22 AM |  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpvH_SaU 
+01/15/15 03:18:22 AM |  from temp() copy  taller ecopol.docx to  /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpvH_SaU
+01/15/15 03:18:22 AM |  change name for security: temp.docx 
+01/15/15 03:18:22 AM |   
+01/15/15 03:18:22 AM |  [new conversion] 
+01/15/15 03:18:22 AM |  	from_docx starting 
+01/15/15 03:18:22 AM |  	from_docx creating file /Users/usuario/Documents/prueba/taller ecopol.txt
+01/15/15 03:18:22 AM |  	from_docx file created /Users/usuario/Documents/prueba/taller ecopol.txt
+01/15/15 03:18:22 AM |  	from_docx hero = xml
+01/15/15 03:18:22 AM |  	from_docx_ zipfile open document 
+01/15/15 03:18:22 AM |  	tfrom_docx_ close document 
+01/15/15 03:18:22 AM |  	from_docx_ XML(xml_content) 
+01/15/15 03:18:22 AM |  	from_docx_ tree.iterator 
+01/15/15 03:18:22 AM |  deleting temp directory /var/folders/p4/54lq003119g5gtvcs8bhtp_c0000gp/T/tmpvH_SaU

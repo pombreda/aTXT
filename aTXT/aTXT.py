@@ -843,7 +843,12 @@ def main():
                             print e
                         return
     elif args['-i']:
-        import GUI
+        try:
+            import GUI
+        except Exception, e:
+            if verbose:
+                print e
+            return
         GUI.main()
     else:
         print usagedoc.__doc__

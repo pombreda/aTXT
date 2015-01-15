@@ -24,4 +24,3 @@ I've used these scripts to convert common files documents to plain text with
 just *doble-click*, as one way to use it, but you could use it in a
 shell. The outcome by the way it's just a ``.txt`` file for each
 document.
-

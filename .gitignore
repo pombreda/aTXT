@@ -11,6 +11,8 @@
 # Editor temp files
 *.swp
 *~
+*.spec
+.DS_Store
 
 *.pyc
 /build

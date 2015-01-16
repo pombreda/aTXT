@@ -3,10 +3,10 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-14 22:46:10
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 19:18:06
+# @Last Modified time: 2015-01-15 22:42:53
 
 """
-A friendly Extractor of Text for Data Mining
+A Data Mining Tool For Extract Text From Files
 
 Usage:
     aTXT
@@ -22,7 +22,7 @@ Arguments:
     --path <path>     Process the folder with path <path> and all files inside.
 
 General Options:
-    -i                Launch a Graphical Interface.
+    -i                Launch the (GUI) Graphical Interface.
     --from <from>     Process files from path <from>. [default: ./]
     --to <to>         Save all (*.txt) files to path <to> if <file> appears. [default: ./]
     --depth <depth>   Depth for trasvering path using depth-first-search
@@ -35,7 +35,7 @@ General Options:
     -u                Use uppercase for all text processed.
     -o                Overwrite if *.txt file version yet exists.
     -h, --help        Print this help.
-    -V, --version         Print current version installed.
+    -V, --version     Print current version installed.
     -v, --verbose     Print error messages.
 """
 

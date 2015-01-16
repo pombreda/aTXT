@@ -1,9 +1,13 @@
 aTXT.py
 =======
 
-A user-friendly tool for extract text data from files of a directory in-depth. 
-Files with the extension ``.docx``,\ ``.pdf``,\ ``.doc`` (only *windows*) could be convert a plain
-text, file ``.txt``. 
+A Data Mining Tool For Extract Text From Files. 
+Supported Files:
+
+- PDF
+- DOCX
+- DOC
+- DAT
 
 Meta
 ----
@@ -44,7 +48,7 @@ Arguments:
     --path <path>     Process the folder with path <path> and all files inside.
 
 General Options:
-    -i                Launch a Graphical Interface.
+    -i                Launch the (GUI) Graphical Interface.
     --from <from>     Process files from path <from>. [default: ./]
     --to <to>         Save all (*.txt) files to path <to> if <file> appears. [default: ./]
     --depth <depth>   Depth for trasvering path using depth-first-search
@@ -57,7 +61,7 @@ General Options:
     -u                Use uppercase for all text processed.
     -o                Overwrite if *.txt file version yet exists.
     -h, --help        Print this help.
-    -V, --version         Print current version installed.
+    -V, --version     Print current version installed.
     -v, --verbose     Print error messages.
 ```
 

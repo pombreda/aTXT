@@ -24,19 +24,22 @@ setup(
     version=VERSION,
     include_package_data=True,
     license='MIT',
-    description='A friendly Extractor of Text',
+    description='A Data Mining Tool For Extract Text From Files',
     author='Jonathan S. Prieto',
     author_email='prieto.jona@gmail.com',
     url='https://github.com/d555/aTXT',   # use the URL to the github repo
-    download_url='https://github.com/d555/aTXT/' + VERSION,
+    download_url='https://github.com/d555/aTXT/',
     # arbitrary keywords
     keywords="txt doc docx pdf doc2txt docx2txt pdf2txt data conversion",
-    long_description=read_md('README.md'),
+    long_description=open('README.rst').read(),
     install_requires=[
             "lxml>=3.2.3",
             "docx>=0.2.0",
             "pdfminer",
-            "docopt>=0.6.2"
+            "docopt>=0.6.2",
+            "PySide",
+            "kitchen==1.1.1",
+            "scandir==0.8"
     ],
     # zip_safe=True,
     entry_points={
@@ -56,6 +59,7 @@ setup(
     ],
 )
 
+# pandoc --from=markdown_github --to=rst --output=README.rst README.md
 # Pasos para subir a pypi
 # python setup.py register -r pypi
 # python setup.py sdist upload -r pypi 

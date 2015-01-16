@@ -3,17 +3,19 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-14 22:46:10
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 10:47:48
+# @Last Modified time: 2015-01-15 19:18:06
 
 """
+A friendly Extractor of Text for Data Mining
 
 Usage:
-    aTXT.py -i
-    aTXT.py <file> [-V|--verbose] [-uo] [--to <to>]
-    aTXT.py [--from <from>] [--to <to>] <file>... [-uo] [-V|--verbose]
-    aTXT.py --path <path> --depth <depth> [--to <to>] [-V|--verbose] 
+    aTXT
+    aTXT -i
+    aTXT <file> [-V|--verbose] [-uo] [--to <to>]
+    aTXT [--from <from>] [--to <to>] <file>... [-uo] [-V|--verbose]
+    aTXT --path <path> --depth <depth> [--to <to>] [-V|--verbose] 
             [-a|--all] [-p|--pdf] [-d|--doc] [-x|--docx] [-t|--dat] [-uo]
-    aTXT.py [-h|--help] 
+    aTXT [-h|--help] 
 
 Arguments:
     <file>            If <from> is none, file should be in current directory.
@@ -41,10 +43,5 @@ from docopt import docopt
 
 if __name__ == '__main__':
     args = docopt(__doc__)
-    if args['<file>']:
-        print "entro a file"
-    elif args['<path>']:
-        print "entro a path"
-    else:
-        print __doc__
+    print args
 

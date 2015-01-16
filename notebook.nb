@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40343,        900]
-NotebookOptionsPosition[     39013,        848]
-NotebookOutlinePosition[     39398,        865]
-CellTagsIndexPosition[     39355,        862]
+NotebookDataLength[     40332,        899]
+NotebookOptionsPosition[     39002,        847]
+NotebookOutlinePosition[     39387,        864]
+CellTagsIndexPosition[     39344,        861]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -838,12 +838,11 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Import", "[", 
-  RowBox[{"\"\<!python aTXT.py\>\"", ",", "\"\<String\>\""}], "]"}]], "Input",\
-
- CellChangeTimes->{{3.630349619574437*^9, 3.630349631274782*^9}}],
+  RowBox[{"\"\<!top\>\"", ",", "\"\<String\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.630349619574437*^9, 3.6303496566902122`*^9}}],
 
 Cell[BoxData["\<\"\"\>"], "Output",
- CellChangeTimes->{{3.6303496263590612`*^9, 3.63034963178573*^9}}]
+ CellChangeTimes->{{3.6303496263590612`*^9, 3.63034965742316*^9}}]
 }, Open  ]]
 },
 WindowSize->{1233, 762},
@@ -899,8 +898,8 @@ Cell[20749, 467, 17640, 359, 175, "Output"]
 }, Open  ]],
 Cell[38404, 829, 278, 5, 85, "Input"],
 Cell[CellGroupData[{
-Cell[38707, 838, 185, 4, 118, "Input"],
-Cell[38895, 844, 102, 1, 118, "Output"]
+Cell[38707, 838, 174, 3, 118, "Input"],
+Cell[38884, 843, 102, 1, 152, "Output"]
 }, Open  ]]
 }
 ]

@@ -1,5 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# @Author: Jonathan S. Prieto
+# @Date:   2015-01-15 18:49:00
+# @Last Modified by:   Jonathan Prieto 
+# @Last Modified time: 2015-01-15 19:27:34
+
 
 import sys
 import os
@@ -21,19 +26,21 @@ from PySide import QtGui, QtCore
 
 homeDirectory = os.path.expanduser('~')
 
-DEBUG = True
+from aTXT import DEBUG
 
-# log_filename = "LOG.txt"
+if DEBUG:
+    log_filename = "LOG.txt"
+else:
+    log_filename = (
+        "aTXT" + datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log")
 
-log_filename = "aTXT" + \
-    datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".log"
-
-log.basicConfig(
-    filename=log_filename, filemode='w',
-    level=log.DEBUG,
-    format='%(asctime)s %(message)s',
-    datefmt='%m/%d/%Y %I:%M:%S %p'
-)
+if DEBUG:
+    log.basicConfig(
+        filename=log_filename, filemode='w',
+        level=log.DEBUG,
+        format='%(asctime)s %(message)s',
+        datefmt='%m/%d/%Y %I:%M:%S %p'
+    )
 
 
 def debug(msg, *args):

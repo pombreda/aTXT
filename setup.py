@@ -36,7 +36,7 @@ setup(
     entry_points={
         'console_scripts': ['aTXT=aTXT:main']
     },
-    requires=['docopt'],
+    requires=['docopt', 'scandir', 'lxml',
     classifiers=[
         # 'Development Status :: 3 - Alpha',
         'Environment :: Console',
@@ -49,3 +49,7 @@ setup(
         'Topic :: Utilities',
     ],
 )
+
+
+# python setup.py register -r pyp
+# python setup.py sdist upload -r pypi 

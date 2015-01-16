@@ -1,8 +1,11 @@
+# @Author: Jonathan S. Prieto
+# @Date:   2015-01-15 18:49:00
+# @Last Modified by:   Jonathan Prieto 
+# @Last Modified time: 2015-01-15 19:27:53
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 
-__author__ = 'Jonathan Prieto'
+from __future__ import division
 
 from version import __version__ as version
 __version__ = version
@@ -30,21 +33,28 @@ UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
 verbose = False
-log_filename = "aTXT" + \
-datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt"
-# log_filename = "LOG.txt"
+DEBUG = False
+
+if DEBUG:
+    log_filename = "LOG.txt"
+else:
+    log_filename = (
+        "aTXT" + datetime.datetime.now().strftime("-%Y_%m_%d_%H-%M") + ".txt")
+
+PATH_BIN = os.path.dirname(os.path.abspath(__file__))
 
 
 class Debug(object):
 
     def __init__(self, log_path=log_filename, debug=False):
         self.debug = debug
-        log.basicConfig(filename=log_path,
-                        filemode='w',
-                        level=log.DEBUG,
-                        format='%(asctime)s %(message)s',
-                        datefmt='%m/%d/%y %I:%M:%S %p | '
-                        )
+        if verbose:
+            log.basicConfig(filename=log_path,
+                            filemode='w',
+                            level=log.DEBUG,
+                            format='%(asctime)s %(message)s',
+                            datefmt='%m/%d/%y %I:%M:%S %p | '
+                            )
 
     def write(self, msg, *args):
         if not self.debug:
@@ -199,7 +209,7 @@ class aTXT(object):
         if sys.platform in ["win32"]:
             self.debug('set thirdy paths for win32')
             try:
-                self.xpdf_path = os.path.join(os.curdir, 'bin', 'win', 'bin32')
+                self.xpdf_path = os.path.join(PATH_BIN, 'bin', 'win', 'bin32')
                 self.pdftotext = os.path.join(self.xpdf_path, 'pdftotext.exe')
                 self.pdftopng = os.path.join(self.xpdf_path, 'pdftopng.exe')
                 self.pdffonts = os.path.join(self.xpdf_path, 'pdffonts.exe')
@@ -209,7 +219,7 @@ class aTXT(object):
         elif sys.platform in ["darwin"]:
             self.debug('set thirdy paths for darwin mac')
             try:
-                self.xpdf_path = os.path.join(os.curdir, 'bin', 'mac', 'bin64')
+                self.xpdf_path = os.path.join(PATH_BIN, 'bin', 'mac', 'bin64')
                 self.pdftotext = os.path.join(self.xpdf_path, 'pdftotext')
                 self.pdftopng = os.path.join(self.xpdf_path, 'pdftopng')
                 self.pdffonts = os.path.join(self.xpdf_path, 'pdffonts')
@@ -715,7 +725,7 @@ def main():
     global verbose
     args = docopt(usagedoc.__doc__, version='aTXT V' + __version__)
     verbose = args['--verbose']
-    
+
     manager = aTXT()
 
     if args['<file>']:
@@ -724,6 +734,7 @@ def main():
             if not os.path.exists(path) or not os.path.isdir(path):
                 if verbose:
                     print path, 'is not a valid path for --from option'
+                print usagedoc.__doc__
                 return
         else:
             path = os.getcwd()
@@ -732,6 +743,7 @@ def main():
             if not os.path.exists(to) or not os.path.isdir(to):
                 if verbose:
                     print to, 'is not a valid path for --to option'
+                print usagedoc.__doc__
                 return
         else:
             to = path
@@ -757,8 +769,7 @@ def main():
             tfiles.add(ext)
         tfiles = list(tfiles)
         if not files:
-            if verbose:
-                print 'No files to process.'
+            print 'No files to process.'
             return
 
         if verbose:
@@ -769,11 +780,11 @@ def main():
 
         for fpath in files:
             manager.convert(
-                            filepath=fpath,
-                            uppercase=args['-u'],
-                            overwrite=args['-o'],
-                            savein=to
-                        )
+                filepath=fpath,
+                uppercase=args['-u'],
+                overwrite=args['-o'],
+                savein=to
+            )
 
     elif args['--path']:
         if args['<path>']:
@@ -781,6 +792,7 @@ def main():
             if not os.path.exists(path) or not os.path.isdir(path):
                 if verbose:
                     print path, 'is not a valid path for --path option'
+                print usagedoc.__doc__
                 return
             depth = args['--depth']
             try:
@@ -790,6 +802,7 @@ def main():
             except:
                 if verbose:
                     print depth, 'is not a valid depth for trasversing. Put a positive integer.'
+                print usagedoc.__doc__
                 return
             to = args['--to']
             if not to:
@@ -800,6 +813,7 @@ def main():
             if not os.path.exists(to) or not os.path.isdir(to):
                 if verbose:
                     print path, 'is not a valid path for --to option'
+                print usagedoc.__doc__
                 return
             tfiles = []
             if args['--pdf']:
@@ -833,21 +847,19 @@ def main():
                             print 'Please Wait (.pdf) usually take few minutes.'
 
                         manager.convert(
-                            filepath = fpath,
-                            uppercase = args['-u'],
-                            overwrite = args['-o'],
-                            savein = to
+                            filepath=fpath,
+                            uppercase=args['-u'],
+                            overwrite=args['-o'],
+                            savein=to
                         )
                     except Exception, e:
-                        if verbose:
-                            print e
+                        print e
                         return
     elif args['-i']:
         try:
             import GUI
         except Exception, e:
-            if verbose:
-                print e
+            print e
             return
         GUI.main()
     else:

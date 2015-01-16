@@ -1,0 +1,232 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8952,        223]
+NotebookOptionsPosition[      7866,        180]
+NotebookOutlinePosition[      8213,        195]
+CellTagsIndexPosition[      8170,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Run", "[", "\"\<aTXT -i\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6303536966371174`*^9, 3.6303536993392715`*^9}, {
+  3.630353733475224*^9, 3.630353757237583*^9}, {3.630354657039049*^9, 
+  3.6303546703758116`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{
+  3.630353761480826*^9, {3.630354662807379*^9, 3.6303546872187753`*^9}, 
+   3.6303585538348866`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"proceso", " ", "=", " ", 
+   RowBox[{"StartProcess", "[", "$SystemShell", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6303547301842327`*^9, 3.630354812010913*^9}, 
+   3.630354929598101*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WriteLine", "[", 
+   RowBox[{"proceso", ",", " ", "\"\<aTXT -h\>\""}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6303548165181704`*^9, 3.630354846209869*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"ReadString", "[", 
+   RowBox[{"proceso", ",", " ", "EndOfBuffer"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.630354847956969*^9, 3.6303549047316575`*^9}}],
+
+Cell[BoxData["\<\"Microsoft Windows [Versi\[Cent]n 6.1.7600]\\r\\nCopyright \
+(c) 2009 Microsoft Corporation. Reservados todos los \
+derechos.\\r\\n\\r\\nC:\\\\Users\\\\user\\\\Documents>aTXT -h\\nA friendly \
+Extractor of Text for Data Mining\\r\\n\\r\\nUsage:\\r\\n    aTXT\\r\\n    \
+aTXT -i\\r\\n    aTXT <file> [-V|--verbose] [-uo] [--to <to>]\\r\\n    aTXT \
+[--from <from>] [--to <to>] <file>... [-uo] [-V|--verbose]\\r\\n    aTXT \
+--path <path> --depth <depth> [--to <to>] [-V|--verbose] \\r\\n            \
+[-a|--all] [-p|--pdf] [-d|--doc] [-x|--docx] [-t|--dat] [-uo]\\r\\n    aTXT \
+[-h|--help] \\r\\n\\r\\nArguments:\\r\\n    <file>            If <from> is \
+none, file should be in current directory.\\r\\n    --path <path>     Process \
+the folder with path <path> and all files inside.\\r\\n\\r\\nGeneral Options:\
+\\r\\n    -i                Launch a Graphical Interface.\\r\\n    --from \
+<from>     Process files from path <from>. [default: ./]\\r\\n    --to <to>   \
+      Save all (*.txt) files to path <to> if <file> appears. [default: ./]\\r\
+\\n    --depth <depth>   Depth for trasvering path using \
+depth-first-search\\r\\n                      for --path option. [default: 1]\
+\\r\\n    -a, --all         Convert all allowed formats (pdf, docx, doc, \
+dat).\\r\\n    -p, --pdf         Convert files with extension \
+(*.pdf|*.PDF).\\r\\n    -x, --docx        Convert files with extension \
+(*.docx|*.DOCX).\\r\\n    -d, --doc         Convert files with extension \
+(*.doc|*.DOC).\\r\\n    -t, --dat         Convert files with extension \
+(*.dat|*.DAT).\\r\\n    -u                Use uppercase for all text \
+processed.\\r\\n    -o                Overwrite if *.txt file version yet \
+exists.\\r\\n    -h, --help        Print this help.\\r\\n    -V, --version    \
+     Print current version installed.\\r\\n    -v, --verbose     Print error \
+messages.\\r\\n\\r\\nC:\\\\Users\\\\user\\\\Documents>\"\>"], "Output",
+ CellChangeTimes->{{3.6303548542918262`*^9, 3.630354867302249*^9}, {
+   3.6303548984604464`*^9, 3.6303549053712587`*^9}, 3.6303549404295206`*^9, 
+   3.6303583341998987`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"comando", " ", "=", "\"\<aTXT --help\>\""}]], "Input",
+ CellChangeTimes->{{3.630354975358982*^9, 3.630355057459033*^9}, {
+  3.6303551859228373`*^9, 3.6303552246423335`*^9}, {3.630355292192538*^9, 
+  3.6303553011469536`*^9}, {3.6303586978509407`*^9, 3.6303587988611183`*^9}}],
+
+Cell[BoxData["\<\"aTXT --help\"\>"], "Output",
+ CellChangeTimes->{{3.6303587195817785`*^9, 3.6303587995319195`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WriteLine", "[", 
+   RowBox[{"proceso", ",", " ", "comando"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6303553055305614`*^9, 3.630355324874595*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReadString", "[", 
+  RowBox[{"proceso", ",", " ", "EndOfBuffer"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6303553365434155`*^9, 3.630355347666235*^9}}],
+
+Cell[BoxData["\<\"aTXT --help\\nA friendly Extractor of Text for Data \
+Mining\\r\\n\\r\\nUsage:\\r\\n    aTXT\\r\\n    aTXT -i\\r\\n    aTXT <file> \
+[-V|--verbose] [-uo] [--to <to>]\\r\\n    aTXT [--from <from>] [--to <to>] \
+<file>... [-uo] [-V|--verbose]\\r\\n    aTXT --path <path> --depth <depth> \
+[--to <to>] [-V|--verbose] \\r\\n            [-a|--all] [-p|--pdf] [-d|--doc] \
+[-x|--docx] [-t|--dat] [-uo]\\r\\n    aTXT [-h|--help] \\r\\n\\r\\nArguments:\
+\\r\\n    <file>            If <from> is none, file should be in current \
+directory.\\r\\n    --path <path>     Process the folder with path <path> and \
+all files inside.\\r\\n\\r\\nGeneral Options:\\r\\n    -i                \
+Launch a Graphical Interface.\\r\\n    --from <from>     Process files from \
+path <from>. [default: ./]\\r\\n    --to <to>         Save all (*.txt) files \
+to path <to> if <file> appears. [default: ./]\\r\\n    --depth <depth>   \
+Depth for trasvering path using depth-first-search\\r\\n                      \
+for --path option. [default: 1]\\r\\n    -a, --all         Convert all \
+allowed formats (pdf, docx, doc, dat).\\r\\n    -p, --pdf         Convert \
+files with extension (*.pdf|*.PDF).\\r\\n    -x, --docx        Convert files \
+with extension (*.docx|*.DOCX).\\r\\n    -d, --doc         Convert files with \
+extension (*.doc|*.DOC).\\r\\n    -t, --dat         Convert files with \
+extension (*.dat|*.DAT).\\r\\n    -u                Use uppercase for all \
+text processed.\\r\\n    -o                Overwrite if *.txt file version \
+yet exists.\\r\\n    -h, --help        Print this help.\\r\\n    -V, \
+--version         Print current version installed.\\r\\n    -v, --verbose     \
+Print error messages.\\r\\n\\r\\nC:\\\\Users\\\\user\\\\Documents>\"\>"], \
+"Output",
+ CellChangeTimes->{{3.630358724589388*^9, 3.6303588036971264`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Run", "[", "\"\<aTXT --help && timeout 10\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.6303591661169634`*^9, 3.630359201529025*^9}, 
+   3.630359263909335*^9, {3.630359295936191*^9, 3.630359311551819*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{
+  3.6303591926994095`*^9, {3.630359309211815*^9, 3.630359322191037*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"comando", " ", "=", " ", 
+  "\"\<aTXT --from D:\\\\ RegulationGame20110207.pdf --to D:\\\\ \
+--verbose\>\""}]], "Input",
+ CellChangeTimes->{{3.630359329788251*^9, 3.630359354233494*^9}, {
+  3.630359400849576*^9, 3.6303594518460655`*^9}, {3.630359509503767*^9, 
+  3.6303595167109795`*^9}}],
+
+Cell[BoxData["\<\"aTXT --from D:\\\\ RegulationGame20110207.pdf --to D:\\\\ \
+--verbose\"\>"], "Output",
+ CellChangeTimes->{3.630359337775465*^9, 3.630359453156468*^9, 
+  3.6303595176625814`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Run", "[", 
+  RowBox[{"comando", "<>", " ", "\"\< && timeout 60\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.630359454919271*^9, 3.630359472063701*^9}, {
+  3.630359530657404*^9, 3.630359531234605*^9}, {3.6303595981811247`*^9, 
+  3.6303595984775257`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.6303594871801276`*^9, 3.630359528894601*^9, 
+  3.630359647851612*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 240, 4, 31, "Input"],
+Cell[823, 28, 149, 3, 31, "Output"]
+}, Open  ]],
+Cell[987, 34, 228, 5, 31, "Input"],
+Cell[1218, 41, 197, 4, 31, "Input"],
+Cell[CellGroupData[{
+Cell[1440, 49, 212, 4, 52, "Input"],
+Cell[1655, 55, 2115, 28, 1452, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3807, 88, 298, 4, 31, "Input"],
+Cell[4108, 94, 116, 1, 31, "Output"]
+}, Open  ]],
+Cell[4239, 98, 189, 4, 31, "Input"],
+Cell[CellGroupData[{
+Cell[4453, 106, 175, 3, 31, "Input"],
+Cell[4631, 111, 1844, 24, 1365, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6512, 140, 228, 3, 31, "Input"],
+Cell[6743, 145, 121, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6901, 152, 312, 6, 31, "Input"],
+Cell[7216, 160, 195, 3, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7448, 168, 280, 5, 31, "Input"],
+Cell[7731, 175, 119, 2, 31, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

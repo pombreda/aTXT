@@ -3,9 +3,7 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-15 18:49:00
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 19:27:34
-
-
+# @Last Modified time: 2015-01-15 19:36:45
 import sys
 import os
 from aTXT import aTXT
@@ -15,18 +13,15 @@ import logging as log
 import shutil as sh
 import datetime
 from latin2ascii import enconding_path
-
-
 from kitchen.text.converters import getwriter
+from PySide import QtGui, QtCore
+from aTXT import DEBUG
+
+homeDirectory = os.path.expanduser('~')
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-from PySide import QtGui, QtCore
-
-homeDirectory = os.path.expanduser('~')
-
-from aTXT import DEBUG
 
 if DEBUG:
     log_filename = "LOG.txt"

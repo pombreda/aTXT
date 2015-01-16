@@ -1,14 +1,13 @@
 # @Author: Jonathan S. Prieto
 # @Date:   2015-01-15 18:49:00
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 19:27:53
+# @Last Modified time: 2015-01-15 19:37:20
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from __future__ import division
 
 from version import __version__ as version
-__version__ = version
 
 import os
 import tempfile as tmp
@@ -28,6 +27,8 @@ from docopt import docopt
 import usagedoc
 
 from kitchen.text.converters import getwriter, to_unicode
+
+__version__ = version
 
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)

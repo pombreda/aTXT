@@ -36,7 +36,7 @@ setup(
     entry_points={
         'console_scripts': ['aTXT=aTXT:main']
     },
-    requires=['docopt', 'scandir', 'lxml',
+    requires=['docopt', 'scandir', 'lxml', 'PySide', 'kitchen'],
     classifiers=[
         # 'Development Status :: 3 - Alpha',
         'Environment :: Console',

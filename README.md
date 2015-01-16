@@ -12,6 +12,13 @@ Meta
 -  Email: prieto.jona@gmail.com
 -  Notes: Have feedback? Please send me an email. This project is in development.
 
+Installing
+----------
+
+```
+    pip install aTXT
+```
+
 Usage
 -----
 

@@ -3,7 +3,7 @@
 # @Author: usuario
 # @Date:   2014-09-05 07:45:22
 # @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2014-10-07 15:35:23
+# @Last Modified time: 2015-02-01 16:05:23
 
 __author__ = 'Jonathan Prieto'
 import os
@@ -16,9 +16,8 @@ from kitchen.text.converters import getwriter, to_unicode
 UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
-debug = True
+debug = False
 
-__version__ = '0.1.1'
 __all__ = ['walk', 'size_str', 'walk_size']
 
 

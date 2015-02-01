@@ -9,13 +9,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-try:
-    from pypandoc import convert
-    read_md = lambda f: convert(f, 'rst')
-except ImportError:
-    print("warning: pypandoc module not found, could not convert Markdown to RST")
-    read_md = lambda f: open(f, 'r').read()
-
 setup(
     name='aTXT',
     packages=['aTXT'],
@@ -30,7 +23,7 @@ setup(
     url='https://github.com/d555/aTXT',   # use the URL to the github repo
     download_url='https://github.com/d555/aTXT/',
     # arbitrary keywords
-    keywords="txt doc docx pdf doc2txt docx2txt pdf2txt data conversion",
+    keywords="text txt doc docx pdf doc2txt docx2txt pdf2txt convert",
     long_description=open('README.rst').read(),
     install_requires=[
             "lxml>=3.2.3",
@@ -38,8 +31,8 @@ setup(
             "pdfminer",
             "docopt>=0.6.2",
             "PySide",
-            "kitchen==1.1.1",
-            "scandir==0.8"
+            "kitchen>=1.1.1",
+            "scandir>=0.8"
     ],
     # zip_safe=True,
     entry_points={

@@ -23,16 +23,16 @@ setup(
     url='https://github.com/d555/aTXT',   # use the URL to the github repo
     download_url='https://github.com/d555/aTXT/',
     # arbitrary keywords
-    keywords="text txt doc docx pdf doc2txt docx2txt pdf2txt convert",
+    keywords='text txt doc docx pdf doc2txt docx2txt pdf2txt convert',
     long_description=open('README.rst').read(),
     install_requires=[
-            "lxml>=3.2.3",
-            "docx>=0.2.0",
-            "pdfminer",
-            "docopt>=0.6.2",
-            "PySide",
-            "kitchen>=1.1.1",
-            "scandir>=0.8"
+            'lxml>=3.2.3',
+            'docx>=0.2.0',
+            'pdfminer',
+            'docopt>=0.6.2',
+            'PySide',
+            'kitchen>=1.1.1',
+            'scandir>=0.8'
     ],
     # zip_safe=True,
     entry_points={
@@ -54,5 +54,6 @@ setup(
 
 # pandoc --from=markdown_github --to=rst --output=README.rst README.md
 # Pasos para subir a pypi
+# git tag v...
 # python setup.py register -r pypi
 # python setup.py sdist upload -r pypi 

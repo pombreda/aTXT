@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Author: Jonathan S. Prieto
-# @Date:   2015-01-15 18:49:00
-# @Last Modified by:   Jonathan Prieto 
-# @Last Modified time: 2015-01-15 19:36:45
+# @Date:   2015-02-26 18:20:50
+# @Last Modified time: 2015-02-26 19:51:50
+
 import sys
 import os
 from aTXT import aTXT
@@ -41,7 +41,7 @@ if DEBUG:
 def debug(msg, *args):
     if DEBUG:
         try:
-            if type(msg) is type(lambda x: x):
+            if hasattr(msg, '__call__'):
                 log.debug(msg.func_name)
                 for arg in args:
                     log.debug("\t{0}".format(args))
@@ -91,6 +91,8 @@ class ProcessLib(QtCore.QThread):
         # manager = self.window.aTXT
         manager = aTXT()
         conta = 0
+        files_finished = 0
+        fails = []
 
         for root, dirs, files in wk.walk(
                 self.window.directory,
@@ -112,7 +114,7 @@ class ProcessLib(QtCore.QThread):
                     savein = self.window.savein
             except Exception, e:
 
-                self.debug("Something wrong with savein path: ")
+                self.debug("Something wrong with `savein` path: ")
                 self.debug(savein)
                 self.debug(e)
 
@@ -143,17 +145,24 @@ class ProcessLib(QtCore.QThread):
 
                 try:
                     self.debug('Converting File ... ')
+
                     if filepath.lower().endswith('.pdf'):
                         self.debug(
-                            'It\'ll take few seconds or minutes (OCR Reconigtion)  ')
+                            'It\'ll take few seconds or minutes (OCR)')
                         self.debug('Please Wait')
 
-                    manager.convert(
+                    newpath = manager.convert(
                         filepath=filepath,
                         uppercase=self.window.uppercase,
                         overwrite=self.window.overwrite,
                         savein=self.window.savein
                     )
+                    if newpath != '':
+                        files_finished += 1
+                    else:
+                        fails.append(filepath)
+                        self.message.emit(
+                            "Impossible process: " + str(filepath))
 
                 except Exception, e:
                     self.debug('Fail conversion aTXT calling from GUI.py')
@@ -166,6 +175,9 @@ class ProcessLib(QtCore.QThread):
         self.partDone.emit(100)
 
         self.message.emit("Total Files: " + str(conta))
+        self.message.emit("Files Finished: " + str(files_finished))
+        self.message.emit("Files Unfinished: " + str(conta - files_finished))
+
         try:
             manager.close()
         except:
@@ -378,7 +390,7 @@ class Window(QtGui.QWidget):
         self.checkDOC = QtGui.QCheckBox(".doc")
         self.checkDOC.setCheckState(self.checked)
 
-        if not sys.platform in ["win32"]:
+        if sys.platform not in ["win32"]:
             self.checkDOC.setCheckState(self.unchecked)
             self.checkDOC.setEnabled(False)
 
@@ -412,7 +424,7 @@ class Window(QtGui.QWidget):
 
         self.checkOverwrite = QtGui.QCheckBox("Overwrite Files")
         self.checkOverwrite.setToolTip(
-            "If there the .txt version of file, don't proccess file again with aTXT")
+            "Dont process file if txt version exists")
         self.checkOverwrite.setCheckState(self.checked)
         # debug
         self.checkClean = QtGui.QCheckBox("Clean Directory")
@@ -488,7 +500,7 @@ class Window(QtGui.QWidget):
         self.checkDAT.setCheckState(self.checked)
 
         self.checkDOC.setCheckState(self.checked)
-        if not sys.platform in ["win32"]:
+        if sys.platform not in ["win32"]:
             self.checkDOC.setCheckState(self.unchecked)
             self.checkDOC.setEnabled(False)
 

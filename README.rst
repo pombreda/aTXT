@@ -17,8 +17,23 @@ Meta
 -  Notes: Have feedback? Please send me an email. This project is in
    development.
 
+Requirements
+-------------
+This software is available thank to others open sources projects.
+The following list itemizes some of those
+
+- PySide (GUI lib)
+- Tessaract OCR 
+- xpdf binaries (a option to process pdf)
+- lxml (doc files)
+- scandir (trasversal folder more easy and fast) (it could be need to compiled from source)
+- pdfminer 
+- docx
+
+
 Installing
 ----------
+Please before continue with installation process, make sure that the requirements listed above are sucessful installed.
 
 ::
 
@@ -67,3 +82,15 @@ Console shows:
         -V, --version     Print current version installed.
         -v, --verbose     Print error messages.
 
+
+Work inside graphical interface:
+::
+
+        aTXT --i
+
+Colaborating
+------------
+
+Do you wanna colaborate with me? send me a email to `prieto.jona@gmail.com` or just make a pull request in the github repository. 
+
+I need some help to write testing routines for a lack of time.

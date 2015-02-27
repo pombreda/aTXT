@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-from aTXT.version import __version__
-
-VERSION = __version__
+VERSION = "v1.0.4"
 
 try:
     from setuptools import setup
@@ -25,20 +23,23 @@ setup(
     # arbitrary keywords
     keywords='text txt doc docx pdf doc2txt docx2txt pdf2txt convert',
     long_description=open('README.rst').read(),
-    install_requires=[
-            'lxml>=3.2.3',
-            'docx>=0.2.0',
-            'pdfminer',
-            'docopt>=0.6.2',
-            'PySide',
-            'kitchen>=1.1.1',
-            'scandir>=0.8'
+    dependency_links=[
     ],
-    # zip_safe=True,
+    install_requires=[
+        'unidecode',
+        'Pillow',
+        'lxml>=3.2.3',
+        'docx>=0.2.0',
+        'pdfminer',
+        'docopt',
+        'PySide',
+        'kitchen>=1.1.1',
+        'scandir>=0.8'
+    ],
+    zip_safe=True,
     entry_points={
         'console_scripts': ['aTXT=aTXT:main']
     },
-    requires=['docopt', 'scandir', 'lxml', 'PySide', 'kitchen'],
     classifiers=[
         # 'Development Status :: 3 - Alpha',
         'Environment :: Console',
@@ -56,4 +57,4 @@ setup(
 # Pasos para subir a pypi
 # git tag v...
 # python setup.py register -r pypi
-# python setup.py sdist upload -r pypi 
+# python setup.py sdist upload -r pypi

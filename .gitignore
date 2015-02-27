@@ -17,6 +17,7 @@
 *.pyc
 /build
 /dist
+/venv
 
 *.txt
 

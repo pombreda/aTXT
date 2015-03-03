@@ -20,7 +20,4 @@
 /venv
 
 *.txt
-
-*.sublime-workspace
-
-*.sublime-workspace
+*.sublime*

@@ -34,7 +34,8 @@ setup(
         'docopt',
         'PySide',
         'kitchen>=1.1.1',
-        'scandir>=0.8'
+        'scandir>=0.8',
+        'BeautifulSoup>=3.2.1'
     ],
     zip_safe=True,
     entry_points={

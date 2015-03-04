@@ -1,10 +1,10 @@
-#!/Users/usuario/Documents/aTXT/venv/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'aTXT==1.0.3','console_scripts','aTXT'
-__requires__ = 'aTXT==1.0.3'
+#!/Users/usuario/Documents/aTXT/venv/bin/python2.7
+# EASY-INSTALL-ENTRY-SCRIPT: 'aTXT==1.0.4','console_scripts','aTXT'
+__requires__ = 'aTXT==1.0.4'
 import sys
 from pkg_resources import load_entry_point
 
 if __name__ == '__main__':
     sys.exit(
-        load_entry_point('aTXT==1.0.3', 'console_scripts', 'aTXT')()
+        load_entry_point('aTXT==1.0.4', 'console_scripts', 'aTXT')()
     )

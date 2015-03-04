@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Author: Jonathan S. Prieto
 # @Date:   2015-02-01 16:09:28
-# @Last Modified time: 2015-02-26 19:33:32
+# @Last Modified time: 2015-03-04 16:51:38
 
 from __future__ import division
 
@@ -33,7 +33,7 @@ UTF8Writer = getwriter('utf8')
 sys.stdout = UTF8Writer(sys.stdout)
 
 verbose = False
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     log_filename = 'LOG.txt'
@@ -630,6 +630,49 @@ class aTXT(object):
         sh.copy(self.file.path, self.txt.path)
         return self.txt.path
 
+    def from_html(self):
+        self.debug('')
+        self.debug('[new conversion html]')
+        self.debug('\tfrom_html starting')
+
+        if not self.overwrite and os.path.exists(self.txt.path):
+            return self.txt.path
+
+        try:
+            import codecs
+            f = codecs.open(self.file._path, 'r', encoding='utf-8')
+            s = ''
+            for l in f:
+                s += l
+            import html2text
+            h = html2text.HTML2Text()
+            h.split_next_td = False
+            h.td_count = 0
+            h.table_start = False
+            h.unicode_snob = 0
+            h.escape_snob = 0
+            h.links_each_paragraph = 0
+            h.body_width = 78
+            h.skip_internal_links = True
+            h.inline_links = True
+            h.protect_links = True
+            h.ignore_links = True
+            h.ignore_images = True
+            h.images_to_alt = True
+            h.ignore_emphasis = True
+            h.bypass_tables = False
+            h.google_doc = False
+            h.ul_item_mark = '*'
+            h.emphasis_mark = '_'
+            h.strong_mark = '**'
+            h.single_line_break = True
+            text = h.handle(s)
+            f = codecs.open(self.txt.path, 'w', encoding='utf-8')
+            f.write(text)
+            f.close()
+        except Exception, e:
+            print e
+
     def upper(self):
         if not os.path.exists(self.txt.path):
             self.debug(self.txt.path, 'Not Found')
@@ -708,6 +751,8 @@ class aTXT(object):
 
         elif self.file.extension.endswith('dat'):
             newpath = self.from_dat()
+        elif self.file.extension.endswith('html'):
+            newpath = self.from_html()
 
         if self.uppercase:
             self.upper()

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Author: Jonathan S. Prieto
 # @Date:   2015-02-26 18:20:50
-# @Last Modified time: 2015-02-26 19:51:50
+# @Last Modified time: 2015-03-04 14:32:38
 
 import sys
 import os
@@ -291,21 +291,11 @@ class Window(QtGui.QWidget):
         debug('drawing box Options')
         self.putBoxOptions()
         self.setLayout(self.layout)
-        # self.aTXT = aTXT()
 
     def closeEvent(self, event):
-        # do stuff
-        # try:
-        #     self.aTXT.close()
-        # except:
-        #     pass
+
         self.debug("Exit")
         event.accept()
-
-        # if self.canExit():
-        # event.accept() # let the window close
-        # else:
-        #     event.ignore()
 
     def debug(self, msg):
         try:
@@ -320,7 +310,7 @@ class Window(QtGui.QWidget):
         self.setWindowTitle("aTXT " + __version__)
 
         debug('set size of window',)
-        self.setFixedSize(650, 500)
+        self.setFixedSize(650, 600)
 
         self.setContentsMargins(15, 15, 15, 15)
         self.layout = QtGui.QVBoxLayout()
@@ -385,6 +375,9 @@ class Window(QtGui.QWidget):
         self.checkDAT = QtGui.QCheckBox(".dat")
         self.checkDAT.setCheckState(self.checked)
 
+        self.checkHTML = QtGui.QCheckBox(".html")
+        self.checkHTML.setCheckState(self.checked)
+
         self.heroDOCX = QtGui.QComboBox()
         self.heroDOCX.addItems(['xml', 'python-docx'])
         self.checkDOC = QtGui.QCheckBox(".doc")
@@ -404,6 +397,7 @@ class Window(QtGui.QWidget):
         layout.addWidget(self.heroDOCX, 2, 1)
         layout.addWidget(self.checkDOC, 3, 0)
         layout.addWidget(self.checkDAT, 4, 0)
+        layout.addWidget(self.checkHTML, 5, 0)
 
         self.boxTypeFiles = QtGui.QGroupBox("Types Files")
         self.boxTypeFiles.setLayout(layout)
@@ -529,8 +523,7 @@ class Window(QtGui.QWidget):
             self.listfiles.append(s)
 
     def scanDir(self):
-        debug("")
-        debug("from scanDir", "starting scanning")
+        debug("\nfrom scanDir", "starting scanning")
         self.progress_bar.setValue(0)
 
         self.directory = self.directoryLabel.text()
@@ -554,6 +547,8 @@ class Window(QtGui.QWidget):
             self.tfiles.append('.doc')
         if self.checkDAT.isChecked():
             self.tfiles.append('.dat')
+        if self.checkHTML.isChecked():
+            self.tfiles.append('.html')
 
         debug("tfiles:", self.tfiles)
 
@@ -563,7 +558,6 @@ class Window(QtGui.QWidget):
 
         if len(self.tfiles) > 0:
             debug('Starting Walking over Directory')
-
             self.thread = WalkSize(self)
             self.thread.partDone.connect(self.setProgress)
             self.thread.procDone.connect(self.fin)

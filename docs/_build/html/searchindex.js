@@ -1,0 +1,1 @@
+Search.setIndex({envversion:42,terms:{applic:0,search:0,from:0,deal:0,index:0,text:0,modul:0,content:0,librari:0,file:0,extract:0,page:0,fanci:0},objtypes:{},objnames:{},filenames:["index"],titles:["Welcome to aTXT&#8217;s documentation!"],objects:{},titleterms:{atxt:0,document:0,welcom:0,indic:0,tabl:0}})

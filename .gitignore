@@ -15,9 +15,11 @@
 .DS_Store
 
 *.pyc
-/build
-/dist
-/venv
+build/
+dist/
+venv/
 
 *.txt
 *.sublime*
+aTXT.sublime-project
+aTXT.nb
